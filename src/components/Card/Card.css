@@ -1,5 +1,8 @@
 .q {
   perspective: 150rem;
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .card {
@@ -19,6 +22,7 @@
   justify-content: center;
   align-items: center;
   font-size: 30px;
+  max-width: 500px;
 }
 
 .card__text {
