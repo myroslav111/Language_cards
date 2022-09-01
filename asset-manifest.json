@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Language_cards/static/css/main.58c37fc9.css",
+    "main.js": "/Language_cards/static/js/main.c1d0be64.js",
+    "index.html": "/Language_cards/index.html",
+    "main.58c37fc9.css.map": "/Language_cards/static/css/main.58c37fc9.css.map",
+    "main.c1d0be64.js.map": "/Language_cards/static/js/main.c1d0be64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58c37fc9.css",
+    "static/js/main.c1d0be64.js"
+  ]
+}
