@@ -25,6 +25,8 @@ function Form() {
         setObjUser(id);
       } catch (error) {
         console.log(error);
+      } finally {
+        // document.location.reload();
       }
     }
     fetch();
@@ -38,11 +40,14 @@ function Form() {
     if (!email) {
       api.addWord({ en, ru });
     }
+    if (email) {
+      objUser.data?.push({ en, ru, idCard });
+      await apiSecond.addWordAuth(objUser.id, {
+        ...objUser,
+      });
+    }
     // console.log(objUser);
-    objUser.data?.push({ en, ru, idCard });
-    await apiSecond.addWordAuth(objUser.id, {
-      ...objUser,
-    });
+
     setEn('');
     setRu('');
     setSucces(false);

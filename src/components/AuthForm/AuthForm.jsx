@@ -1,6 +1,6 @@
 import React from 'react';
 import { singInWithGoogle } from '../../index';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './AuthForm.css';
 
 function AuthForm() {
@@ -9,11 +9,16 @@ function AuthForm() {
     'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
   );
   // const [bool, setBool] = useState(false);
+  useEffect(() => {}, [email]);
 
   const handleSubmit = () => {
     setEmail('ysetEmail');
     singInWithGoogle();
-    // document.location.reload();
+  };
+
+  const handleUpDate = () => {
+    document.location.reload();
+    // setBool(true);
   };
 
   return (
@@ -27,7 +32,16 @@ function AuthForm() {
             <b>Sign in with google</b>
           </p>
         </div>
-      ) : null}
+      ) : (
+        <div className="google-btn" onClick={handleUpDate}>
+          <div className="google-icon-wrapper">
+            <img className="google-icon" src={src} alt="icon" />
+          </div>
+          <p className="btn-text">
+            <b>Go</b>
+          </p>
+        </div>
+      )}
     </>
   );
 }

@@ -32,6 +32,7 @@ export const singInWithGoogle = () => {
       console.log(email);
       (async () => {
         const dataRegistered = await apiSecond.getWordsAuth();
+        console.log(dataRegistered);
         const userEmail = dataRegistered.some(user => user.email === email);
         console.log(userEmail);
         if (!userEmail) {
@@ -45,14 +46,22 @@ export const singInWithGoogle = () => {
         }
       })();
 
+      // const userObj = {};
+      // userObj.name = name;
+      // userObj.email = email;
+      // userObj.profilePic = profilePic;
+      // userObj.data = [];
+      // console.log(userObj);
+      // apiSecond.addUsder(userObj);
+
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('profilePic', profilePic);
     })
     .catch(error => {
       console.log(error);
-    })
-    .finally(() => document.location.reload());
+    });
+  // .finally(() => document.location.reload());
 };
 
 // export const UserContext = createContext();
