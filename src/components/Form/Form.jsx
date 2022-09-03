@@ -5,7 +5,8 @@ import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
 import './Form.css';
 import { nanoid } from 'nanoid';
-import AddTaskIcon from '@mui/icons-material/AddTask';
+// import AddTaskIcon from '@mui/icons-material/AddTask';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 // import { async } from '@firebase/util';
 
 function Form() {
@@ -75,7 +76,7 @@ function Form() {
         {!succes ? (
           <AddCircleOutlineIcon />
         ) : (
-          <AddTaskIcon sx={{ color: 'green' }} />
+          <ThumbUpAltIcon sx={{ color: 'green' }} />
         )}
       </button>
     </>
