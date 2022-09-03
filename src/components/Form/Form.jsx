@@ -1,19 +1,50 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import api from 'service/api';
+import apiSecond from 'service/apiForRegistered';
 import './Form.css';
+import { nanoid } from 'nanoid';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+// import { async } from '@firebase/util';
 
 function Form() {
   const [en, setEn] = useState('');
   const [ru, setRu] = useState('');
+  const [email] = useState(localStorage.getItem('email') || '');
+  const [objUser, setObjUser] = useState(null);
+  const [succes, setSucces] = useState(false);
 
-  const handleSubmit = e => {
+  useEffect(() => {
+    async function fatch() {
+      try {
+        const data = await apiSecond.getWordsAuth();
+        const id = data.find(e => e.email === email);
+        // setIdUser(id);
+        setObjUser(id);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fatch();
+  }, [email]);
+
+  const handleSubmit = async e => {
     // e.preventDefault()
+    setSucces(true);
+    let idCard = nanoid();
     if (!en || !ru) return;
-    api.addWord({ en, ru });
+    if (!email) {
+      api.addWord({ en, ru });
+    }
+    // console.log(objUser);
+    objUser.data.push({ en, ru, idCard });
+    await apiSecond.addWordAuth(objUser.id, {
+      ...objUser,
+    });
     setEn('');
     setRu('');
+    setSucces(false);
   };
 
   return (
@@ -41,7 +72,11 @@ function Form() {
       </label>
 
       <button onClick={handleSubmit} type="submit" className="button__add">
-        <AddCircleOutlineIcon />
+        {!succes ? (
+          <AddCircleOutlineIcon />
+        ) : (
+          <AddTaskIcon sx={{ color: 'green' }} />
+        )}
       </button>
     </>
   );

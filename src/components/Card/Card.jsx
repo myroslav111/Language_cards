@@ -6,40 +6,64 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import api from 'service/api';
+import apiSecond from 'service/apiForRegistered';
 import './Card.css';
 
 function Card() {
   const [state, setState] = useState(true);
   const [indexWord, setIndexWord] = useState(0);
   const [word, setWord] = useState([]);
+  const [userObj, setUserObj] = useState(null);
+  const [email] = useState(localStorage.getItem('email') || '');
 
   useEffect(() => {
     (async () => {
       try {
-        const data = await api.getWords();
-        // console.log(data);
-        setWord(data);
+        if (!email) {
+          const data = await api.getWords();
+          setWord(data);
+        }
+        const dataRegistered = await apiSecond.getWordsAuth();
+        const user = dataRegistered.filter(user => user.email === email);
+        setUserObj(user[0]);
+        setWord(user[0].data);
       } catch (error) {
         console.log(error);
       }
     })();
-    api.getWords();
-  }, []);
+  }, [email]);
 
   const removeWord = e => {
     e.stopPropagation();
-    if (!word[indexWord]?.id) return;
-    setWord(word.filter(w => w.id !== word[+indexWord].id));
+    if (word[indexWord]?.id) {
+      setWord(word.filter(w => w.id !== word[+indexWord].id));
+    }
+    if (word[indexWord]?.idCard) {
+      setWord(word.filter(w => w.idCard !== word[+indexWord].idCard));
+    }
+    return;
   };
 
   const deleteWord = async e => {
     e.stopPropagation();
-    if (!word[indexWord]?.id) return;
-    try {
-      api.deleteWord(word[indexWord]?.id);
-      setWord(word.filter(w => w.id !== word[+indexWord].id));
-    } catch (error) {
-      console.log(error);
+    if (word[indexWord]?.id) {
+      try {
+        api.deleteWord(word[indexWord]?.id);
+        setWord(word.filter(w => w.id !== word[+indexWord].id));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (word[indexWord]?.idCard) {
+      try {
+        userObj.data = [
+          ...userObj.data.filter(w => w.idCard !== word[+indexWord].idCard),
+        ];
+        setWord(word.filter(w => w.idCard !== word[+indexWord].idCard));
+        apiSecond.addWordAuth(userObj.id, userObj);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   return (
