@@ -23,10 +23,12 @@ function Card() {
           const data = await api.getWords();
           setWord(data);
         }
-        const dataRegistered = await apiSecond.getWordsAuth();
-        const user = dataRegistered.filter(user => user.email === email);
-        setUserObj(user[0]);
-        setWord(user[0].data);
+        if (email) {
+          const dataRegistered = await apiSecond.getWordsAuth();
+          const user = dataRegistered.filter(user => user.email === email);
+          setUserObj(user[0]);
+          setWord(user[0].data);
+        }
       } catch (error) {
         console.log(error);
       }
