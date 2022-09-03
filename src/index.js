@@ -29,17 +29,18 @@ export const singInWithGoogle = () => {
       const name = result.user.displayName;
       const email = result.user.email;
       const profilePic = result.user.photoURL;
-
+      console.log(email);
       (async () => {
         const dataRegistered = await apiSecond.getWordsAuth();
         const userEmail = dataRegistered.some(user => user.email === email);
+        console.log(userEmail);
         if (!userEmail) {
           const userObj = {};
           userObj.name = name;
           userObj.email = email;
           userObj.profilePic = profilePic;
           userObj.data = [];
-
+          console.log(userObj);
           apiSecond.addUsder(userObj);
         }
       })();

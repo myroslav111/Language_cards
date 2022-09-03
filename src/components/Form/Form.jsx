@@ -17,7 +17,7 @@ function Form() {
   const [succes, setSucces] = useState(false);
 
   useEffect(() => {
-    async function fatch() {
+    async function fetch() {
       try {
         const data = await apiSecond.getWordsAuth();
         const id = data.find(e => e.email === email);
@@ -27,7 +27,7 @@ function Form() {
         console.log(error);
       }
     }
-    fatch();
+    fetch();
   }, [email]);
 
   const handleSubmit = async e => {
@@ -39,7 +39,7 @@ function Form() {
       api.addWord({ en, ru });
     }
     // console.log(objUser);
-    objUser.data.push({ en, ru, idCard });
+    objUser.data?.push({ en, ru, idCard });
     await apiSecond.addWordAuth(objUser.id, {
       ...objUser,
     });
