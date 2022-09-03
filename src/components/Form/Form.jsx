@@ -32,9 +32,9 @@ function Form() {
 
   const handleSubmit = async e => {
     // e.preventDefault()
+    if (!en || !ru) return;
     setSucces(true);
     let idCard = nanoid();
-    if (!en || !ru) return;
     if (!email) {
       api.addWord({ en, ru });
     }
