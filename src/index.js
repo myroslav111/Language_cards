@@ -50,11 +50,16 @@ export const singInWithGoogle = () => {
     })
     .catch(error => {
       console.log(error);
-    });
+    })
+    .finally(() => document.location.reload());
 };
+
+// export const UserContext = createContext();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/Language_cards/">
+    {/* <UserContext.Provider value={emailP}> */}
     <App />
+    {/* </UserContext.Provider> */}
   </BrowserRouter>
 );

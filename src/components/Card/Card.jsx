@@ -7,6 +7,8 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import './Card.css';
 
 function Card() {
@@ -15,9 +17,11 @@ function Card() {
   const [word, setWord] = useState([]);
   const [userObj, setUserObj] = useState(null);
   const [email] = useState(localStorage.getItem('email') || '');
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setLoader(true);
       try {
         if (!email) {
           const data = await api.getWords();
@@ -32,6 +36,7 @@ function Card() {
       } catch (error) {
         console.log(error);
       }
+      setLoader(false);
     })();
   }, [email]);
 
@@ -80,6 +85,11 @@ function Card() {
             classNames="fade"
           >
             <div className="card" onClick={e => setState(state => !state)}>
+              {loader && (
+                <Box sx={{ display: 'flex' }}>
+                  <CircularProgress sx={{ color: '#ff9800' }} />
+                </Box>
+              )}
               {word.length > 0 && (
                 <button
                   id={word[indexWord]?.id}

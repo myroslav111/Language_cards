@@ -10,7 +10,7 @@ import { useState } from 'react';
 function Navigation() {
   const [name] = useState(localStorage.getItem('name') || '');
   const [image] = useState(localStorage.getItem('profilePic') || '');
-  console.log(image);
+  // console.log(image);
   return (
     <div className="header">
       <div className="header__wrap">
