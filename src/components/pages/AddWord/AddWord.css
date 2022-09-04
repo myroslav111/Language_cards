@@ -4,3 +4,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+.color-red {
+  background: rgba(250, 2, 2, 0.8);
+  backdrop-filter: blur(5px);
+}

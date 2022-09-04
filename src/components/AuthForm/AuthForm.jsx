@@ -44,6 +44,7 @@ function AuthForm() {
           </div>
         </div>
       )}
+      
     </>
   );
 }
