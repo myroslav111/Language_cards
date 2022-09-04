@@ -33,13 +33,15 @@ function AuthForm() {
           </p>
         </div>
       ) : (
-        <div className="google-btn" onClick={handleUpDate}>
-          <div className="google-icon-wrapper">
-            <img className="google-icon" src={src} alt="icon" />
+        <div className="screensaver">
+          <div className="google-btn color" onClick={handleUpDate}>
+            <div className="google-icon-wrapper">
+              <img className="google-icon" src={src} alt="icon" />
+            </div>
+            <p className="btn-text text-button-green">
+              <b>Go</b>
+            </p>
           </div>
-          <p className="btn-text">
-            <b>Go</b>
-          </p>
         </div>
       )}
     </>

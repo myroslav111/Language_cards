@@ -43,3 +43,25 @@
 .google-btn:active {
   background: #1669f2;
 }
+
+.color {
+  background-color: green;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.google-btn .text-button-green {
+  margin: 13px 65px 0 0;
+}
+
+.screensaver {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 100%, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+}
