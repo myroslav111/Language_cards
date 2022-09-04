@@ -55,6 +55,7 @@ function Form() {
 
   return (
     <>
+      <h1>Add words for learn</h1>
       <label>
         EN
         <input
