@@ -36,7 +36,7 @@ function Form() {
 
   const handleSubmit = async e => {
     // e.preventDefault()
-    if (!en || !ru) return toast.warn('🦄 you should add word');
+    if (!en || !ru) return toast.warn('🦄 ви повинні додати слово');
     setSucces(true);
     let idCard = nanoid();
     if (!email) {
@@ -49,7 +49,7 @@ function Form() {
       });
     }
     // console.log(objUser);
-    toast.success("🚀 We added you's word!");
+    toast.success('🚀 ми додали слово до ваших карток!');
     setEn('');
     setRu('');
     setSucces(false);
