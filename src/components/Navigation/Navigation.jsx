@@ -6,6 +6,8 @@ import './Navigation.css';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
+
+import 'animate.css';
 // import apiSecond from 'service/apiForRegistered';
 // import { async } from '@firebase/util';
 
@@ -36,8 +38,10 @@ function Navigation() {
           <Avatar alt={name} src={image} />
           <span className="name">{name}</span>
         </Stack>
-        <NavLink to="/cards" className="link">
+        <NavLink to="/cards" className="link ">
+          {/* <div className="animate__animated animate__bounceOut"> */}
           <StyleIcon />
+          {/* </div> */}
         </NavLink>
       </div>
     </div>

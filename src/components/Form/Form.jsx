@@ -7,6 +7,7 @@ import './Form.css';
 import { nanoid } from 'nanoid';
 // import AddTaskIcon from '@mui/icons-material/AddTask';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import { toast } from 'react-toastify';
 // import { async } from '@firebase/util';
 
 function Form() {
@@ -16,6 +17,7 @@ function Form() {
   const [objUser, setObjUser] = useState(null);
   const [succes, setSucces] = useState(false);
 
+  console.log(document.documentElement.scrollHeight);
   useEffect(() => {
     async function fetch() {
       try {
@@ -34,7 +36,7 @@ function Form() {
 
   const handleSubmit = async e => {
     // e.preventDefault()
-    if (!en || !ru) return;
+    if (!en || !ru) return toast.warn('🦄 you should add word');
     setSucces(true);
     let idCard = nanoid();
     if (!email) {
@@ -47,7 +49,7 @@ function Form() {
       });
     }
     // console.log(objUser);
-
+    toast.success("🚀 We added you's word!");
     setEn('');
     setRu('');
     setSucces(false);
@@ -68,7 +70,7 @@ function Form() {
       </label>
       <br />
       <label>
-        RU
+        UA
         <input
           type="text"
           name="ru"

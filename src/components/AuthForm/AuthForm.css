@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .google-btn {
-  width: 184px;
+  width: 204px;
   height: 42px;
   background-color: #f57c00;
   border-radius: 2px;
@@ -12,6 +12,13 @@
   bottom: 5px;
   right: 5px;
 }
+
+@media screen and (max-height: 600px) {
+  .google-btn {
+    display: none;
+  }
+}
+
 .google-btn .google-icon-wrapper {
   position: absolute;
   /* margin-top: 1px; */
@@ -64,4 +71,25 @@
   background: hsla(0, 0%, 100%, 0.7);
   backdrop-filter: blur(5px);
   z-index: 100;
+}
+
+.info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  margin: 0;
+  color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-text {
+  margin-left: 5px;
+  font-family: 'Caveat', cursive;
+}
+
+.text-g {
+  font-family: 'Caveat', cursive;
+  font-size: 14px;
 }
