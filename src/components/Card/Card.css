@@ -17,7 +17,7 @@
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 40%);
-  margin-top: 100px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,27 +86,48 @@
 }
 
 .fade-enter {
-  /* opacity: 0; */
-  transform: rotateY(-80deg);
-  /* transform: rotateY(3.142rad); */
-}
-.fade-exit {
   /* opacity: 1; */
   transform: rotateY(0deg);
+  /* transform: rotateY(180deg); */
+  /* transform: rotateY(3.142rad); */
+  transition-duration: 2s;
+  /* transition-delay: 1s; */
+  /* transition: all 1.8s ease; */
+}
+.fade-exit {
+  /* opacity: 0; */
+  /* opacity: 1; */
+  transform: rotateY(360deg);
+  /* transform: rotateY(190deg); */
+  transition-duration: 2s;
+  /* transition-delay: 1s; */
+  /* transition: all 1.8s ease; */
 }
 .fade-enter-active {
   /* opacity: 1; */
   transform: rotateY(0deg);
+  /* transform: rotateY(180deg); */
+  transition-duration: 2s;
+  /* transition-delay: 1s; */
+  /* transition: all 1.8s ease; */
 }
 .fade-exit-active {
+  /* opacity: 1; */
   /* opacity: 0; */
 
-  transform: rotateY(-80deg);
+  transform: rotateY(360deg);
+  /* transform: rotateY(190deg); */
   /* transform: rotateY(3.142rad); */
+  transition-duration: 2s;
+  /* transition-delay: 1s; */
+  /* transition: all 1.8s ease; */
 }
 .fade-enter-active,
 .fade-exit-active {
   /* transition: opacity 500ms; */
-  transition: transform 500ms ease;
-  /* transition: all 0.8s ; */
+  /* transition: transform 1900ms ease; */
+  /* transition: all 0.8s ease; */
+  transition-duration: 2s;
+  /* transition-delay: 2s; */
+  /* transition: transform 4500ms; */
 }

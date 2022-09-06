@@ -8,7 +8,7 @@ import Modal from '@mui/material/Modal';
 import StyleIcon from '@mui/icons-material/Style';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import AddIcon from '@mui/icons-material/Add';
-
+import Zoom from '@mui/material/Zoom';
 import './AuthForm.css';
 
 const style = {
@@ -71,46 +71,60 @@ function AuthForm() {
       <div className="info" onClick={handleOpen}>
         <InfoIcon />
       </div>
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title">
-            {/* <span className="modal-text">
+        <Zoom
+          in={open}
+          style={{
+            transitionDelay: open ? '500ms' : '0ms',
+            transform: '',
+          }}
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title">
+              {/* <span className="modal-text">
               додайте слова в поле вводу, потім натисніть кнопку +, все готово.
               летс го вчитись
             </span> */}
-            <span className="modal-text">-додайте слова в поле вводу</span>
-            <br />
-            <span className="modal-text">-потім натисніть кнопку +</span>
-            <br />
-            <span className="modal-text">-все готово. летс го вчитись 🚀</span>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-          >
-            <StyleIcon fontSize="small" color="primary" />
-            <span className="modal-text"> - Місце з картками</span>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-          >
-            <LibraryAddIcon fontSize="small" color="secondary" />
-            <span className="modal-text"> - Місце де додають картки</span>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-          >
-            <AddIcon fontSize="small" color="success" />
-            <span className="modal-text"> - кнопка додає слова до карток</span>
-          </Typography>
-        </Box>
+              <span className="modal-text">-додайте слова в поле вводу</span>
+              <br />
+              <span className="modal-text">-потім натисніть кнопку +</span>
+              <br />
+              <span className="modal-text">
+                -все готово. летс го вчитись 🚀
+              </span>
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
+            >
+              <StyleIcon fontSize="small" color="primary" />
+              <span className="modal-text"> - Місце з картками</span>
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
+            >
+              <LibraryAddIcon fontSize="small" color="secondary" />
+              <span className="modal-text"> - Місце де додають картки</span>
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
+            >
+              <AddIcon fontSize="small" color="success" />
+              <span className="modal-text">
+                {' '}
+                - кнопка додає слова до карток
+              </span>
+            </Typography>
+          </Box>
+        </Zoom>
       </Modal>
     </>
   );

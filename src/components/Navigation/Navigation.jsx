@@ -31,17 +31,11 @@ function Navigation() {
             alignItems: 'center',
           }}
         >
-          {/* <img
-            alt={name}
-            src="https://lh3.googleusercontent.com/a-/AFdZucqsMvYj4eU7s0ctgAB71fdJ2rRawqIVOznviNr8Rg=s96-c"
-          /> */}
           <Avatar alt={name} src={image} />
           <span className="name">{name}</span>
         </Stack>
         <NavLink to="/cards" className="link ">
-          {/* <div className="animate__animated animate__bounceOut"> */}
           <StyleIcon />
-          {/* </div> */}
         </NavLink>
       </div>
     </div>

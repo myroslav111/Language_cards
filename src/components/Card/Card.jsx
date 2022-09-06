@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import SettingsEthernetSharpIcon from '@mui/icons-material/SettingsEthernetSharp';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import Zoom from '@mui/material/Zoom';
 import './Card.css';
 import { red } from '@mui/material/colors';
 
@@ -137,6 +138,38 @@ function Card() {
                 </span>
               )}
             </div>
+
+            {/* <div className="card" onClick={e => setState(state => !state)}>
+              {loader && (
+                <Box sx={{ display: 'flex' }}>
+                  <CircularProgress sx={{ color: '#ff9800' }} />
+                </Box>
+              )}
+              {word.length > 0 && (
+                <button
+                  id={word[indexWord]?.id}
+                  className="remove__text"
+                  onClick={removeWord}
+                >
+                  <RemoveCircleIcon />
+                </button>
+              )}
+              {word.length > 0 && (
+                <button
+                  id={word[indexWord]?.id}
+                  className="delete__text"
+                  onClick={deleteWord}
+                >
+                  <DeleteForeverIcon />
+                </button>
+              )}
+
+              {word.length > 0 && (
+                <span className="card__text">
+                  {state ? word[indexWord]?.en : word[indexWord]?.ru}
+                </span>
+              )}
+            </div> */}
           </CSSTransition>
         </SwitchTransition>
         <div className="paginator">
@@ -156,7 +189,7 @@ function Card() {
               <NavigateNextIcon />
             </span>
           ) : null}
-        </div>{' '}
+        </div>
         <div className="description__wrap">
           <span>{word.length} - Words</span>
         </div>
@@ -164,52 +197,61 @@ function Card() {
       <div className="info" onClick={handleOpen}>
         <InfoIcon />
       </div>
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title">
-            {/* <span className="modal-text">
+        <Zoom
+          in={open}
+          style={{
+            transitionDelay: open ? '500ms' : '0ms',
+            transform: '',
+          }}
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title">
+              {/* <span className="modal-text">
               додайте слова в поле вводу, потім натисніть кнопку +, все готово.
               летс го вчитись
             </span> */}
-            <span className="modal-text">
-              - тицай в картку вона покаже переклад
-            </span>
-            <br />
-            <span className="modal-text">
-              - тицай в картку повторно вона сховає переклад
-            </span>
-            <br />
-            <span className="modal-text">летс го вчитись 🚀</span>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-          >
-            <RemoveCircleOutlineIcon fontSize="small" color="primary" />
-            <span className="modal-text">
-              - видалення картки на поточну сессію
-            </span>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-          >
-            <DeleteForeverIcon fontSize="small" sx={{ color: red[500] }} />
-            <span className="modal-text"> - видалення картки назавжди</span>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-          >
-            <SettingsEthernetSharpIcon fontSize="small" color="success" />
-            <span className="modal-text"> - гортаєм слова</span>
-          </Typography>
-        </Box>
+              <span className="modal-text">
+                - тицай в картку вона покаже переклад
+              </span>
+              <br />
+              <span className="modal-text">
+                - тицай в картку повторно вона сховає переклад
+              </span>
+              <br />
+              <span className="modal-text">летс го вчитись 🚀</span>
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
+            >
+              <RemoveCircleOutlineIcon fontSize="small" color="primary" />
+              <span className="modal-text">
+                - видалення картки на поточну сессію
+              </span>
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
+            >
+              <DeleteForeverIcon fontSize="small" sx={{ color: red[500] }} />
+              <span className="modal-text"> - видалення картки назавжди</span>
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
+            >
+              <SettingsEthernetSharpIcon fontSize="small" color="success" />
+              <span className="modal-text"> - гортаєм слова</span>
+            </Typography>
+          </Box>
+        </Zoom>
       </Modal>
     </>
   );
