@@ -7,6 +7,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import apiSecond from 'service/apiForRegistered';
 
+// функционал регистрации через гугле
 export const firebaseConfig = {
   apiKey: 'AIzaSyAZWL6jBhtQG0JPHEylLfigAUp0NuMMCN0',
   authDomain: 'lang-cards-1e9e8.firebaseapp.com',
@@ -45,15 +46,6 @@ export const singInWithGoogle = () => {
           apiSecond.addUsder(userObj);
         }
       })();
-
-      // const userObj = {};
-      // userObj.name = name;
-      // userObj.email = email;
-      // userObj.profilePic = profilePic;
-      // userObj.data = [];
-      // console.log(userObj);
-      // apiSecond.addUsder(userObj);
-
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('profilePic', profilePic);
@@ -61,10 +53,7 @@ export const singInWithGoogle = () => {
     .catch(error => {
       console.log(error);
     });
-  // .finally(() => document.location.reload());
 };
-
-// export const UserContext = createContext();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/Language_cards/">

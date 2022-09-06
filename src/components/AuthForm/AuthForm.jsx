@@ -32,7 +32,7 @@ function AuthForm() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  // const [bool, setBool] = useState(false);
+
   useEffect(() => {}, [email]);
 
   const handleSubmit = () => {
@@ -73,11 +73,13 @@ function AuthForm() {
           </div>
         </div>
       )}
+      {/* иконка инфо */}
       <div className="info" onClick={handleOpen}>
         <InfoIcon />
       </div>
 
       <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
+        {/* модалка */}
         <div className="overlay" onClick={onClickBackdrop}>
           <Box sx={style}>
             <Typography id="modal-modal-title">

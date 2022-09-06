@@ -55,7 +55,9 @@ function Form() {
 
   return (
     <>
+      {/* заголовок  */}
       <h1>Add words for learn</h1>
+      {/* инпут 1 */}
       <label>
         EN
         <input
@@ -67,6 +69,7 @@ function Form() {
         />
       </label>
       <br />
+      {/* инпут 2 */}
       <label>
         UA
         <input

@@ -69,6 +69,7 @@ function AddWord() {
           <div className="form__wrap">
             <Form />
           </div>
+          {/* кнопка выхода с гугла */}
           <div className="google-btn color-red" onClick={handleExit}>
             <div className="google-icon-wrapper">
               <img className="google-icon" src={src} alt="icon" />
@@ -77,6 +78,7 @@ function AddWord() {
               <b className="text-g">задовбало йду з відціль 😡</b>
             </p>
           </div>
+          {/* кнопка инфо  */}
           <div className="info" onClick={handleOpen}>
             <InfoIcon />
           </div>
@@ -86,6 +88,7 @@ function AddWord() {
             classNames="fades"
             timeout={250}
           >
+            {/* модалка */}
             <div className="overlay" onClick={onClickBackdrop}>
               <Box sx={style}>
                 <Typography id="modal-modal-title">

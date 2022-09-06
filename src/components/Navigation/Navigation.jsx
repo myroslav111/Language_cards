@@ -6,15 +6,11 @@ import './Navigation.css';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
-
 import 'animate.css';
-// import apiSecond from 'service/apiForRegistered';
-// import { async } from '@firebase/util';
 
 function Navigation() {
   const [name] = useState(localStorage.getItem('name') || '');
   const [image] = useState(localStorage.getItem('profilePic') || '');
-  // const [image, setImage] = useState('');
 
   return (
     <div className="header">
@@ -22,6 +18,7 @@ function Navigation() {
         <NavLink to="/" className="link">
           <LibraryAddIcon />
         </NavLink>
+        {/* иконка фотки б аватар */}
         <Stack
           direction="row"
           spacing={2}

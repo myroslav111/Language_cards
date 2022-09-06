@@ -17,7 +17,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 import './Card.css';
 import { red } from '@mui/material/colors';
-
+// материал юа стили
 const style = {
   position: 'absolute',
   top: '50%',
@@ -104,7 +104,9 @@ function Card() {
   };
   return (
     <>
+      {/*  */}
       <div className="q">
+        {/* фнимация с либы */}
         <SwitchTransition>
           <CSSTransition
             key={state ? 'Goodbye, world!' : 'Hello, world!'}
@@ -113,6 +115,7 @@ function Card() {
             }
             classNames="fade"
           >
+            {/* чорна карточка */}
             <div className="card" onClick={e => setState(state => !state)}>
               {loader && (
                 <Box sx={{ display: 'flex' }}>
@@ -146,6 +149,7 @@ function Card() {
             </div>
           </CSSTransition>
         </SwitchTransition>
+        {/* кнопка в лево в право стрелки */}
         <div className="paginator">
           {indexWord > 0 ? (
             <span
@@ -164,14 +168,18 @@ function Card() {
             </span>
           ) : null}
         </div>
+        {/* строка в низу карточек количество слов */}
         <div className="description__wrap">
           <span>{word.length} - Words</span>
         </div>
       </div>
+      {/* иконка инфо */}
       <div className="info" onClick={handleOpen}>
         <InfoIcon />
       </div>
+      {/* анимация */}
       <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
+        {/* модалка */}
         <div className="overlay" onClick={onClickBackdrop}>
           <Box sx={style}>
             <Typography id="modal-modal-title">
