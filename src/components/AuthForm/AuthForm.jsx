@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import InfoIcon from '@mui/icons-material/Info';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import StyleIcon from '@mui/icons-material/Style';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import AddIcon from '@mui/icons-material/Add';
-import Zoom from '@mui/material/Zoom';
 import './AuthForm.css';
+import { CSSTransition } from 'react-transition-group';
 
 const style = {
   position: 'absolute',
@@ -21,6 +20,8 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  maxWidth: 'calc(100vw - 48px)',
+  maxHeight: 'calc(100vh - 24px)',
 };
 
 function AuthForm() {
@@ -41,8 +42,12 @@ function AuthForm() {
 
   const handleUpDate = () => {
     document.location.reload();
+  };
 
-    // setBool(true);
+  const onClickBackdrop = e => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
   };
 
   return (
@@ -72,25 +77,10 @@ function AuthForm() {
         <InfoIcon />
       </div>
 
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Zoom
-          in={open}
-          style={{
-            transitionDelay: open ? '500ms' : '0ms',
-            transform: '',
-          }}
-        >
+      <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
+        <div className="overlay" onClick={onClickBackdrop}>
           <Box sx={style}>
             <Typography id="modal-modal-title">
-              {/* <span className="modal-text">
-              додайте слова в поле вводу, потім натисніть кнопку +, все готово.
-              летс го вчитись
-            </span> */}
               <span className="modal-text">-додайте слова в поле вводу</span>
               <br />
               <span className="modal-text">-потім натисніть кнопку +</span>
@@ -124,8 +114,8 @@ function AuthForm() {
               </span>
             </Typography>
           </Box>
-        </Zoom>
-      </Modal>
+        </div>
+      </CSSTransition>
     </>
   );
 }

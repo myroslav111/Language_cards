@@ -94,7 +94,7 @@
   font-size: 14px;
 }
 
-.alert-enter {
+/* .alert-enter {
   opacity: 0;
   transform: scale(0.9);
 }
@@ -107,6 +107,50 @@
   opacity: 1;
 }
 .alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+} */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.fades-enter {
+  /* opacity: 0;
+  transform: scale(0.1); */
+
+  opacity: 0;
+  transform: scale(0.9);
+}
+.fades-enter-active {
+  /* opacity: 1;
+  transform: scale(1);
+  transition: all 250ms linear; */
+
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.fades-exit {
+  /* transform: scale(1);
+  opacity: 1; */
+
+  opacity: 1;
+}
+.fades-exit-active {
+  /* opacity: 0;
+  transform: scale(0.1);
+  transition: all 250ms linear; */
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;

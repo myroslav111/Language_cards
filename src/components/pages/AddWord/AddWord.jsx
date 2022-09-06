@@ -5,12 +5,12 @@ import { useState } from 'react';
 import InfoIcon from '@mui/icons-material/Info';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import { CSSTransition } from 'react-transition-group';
 import StyleIcon from '@mui/icons-material/Style';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import AddIcon from '@mui/icons-material/Add';
 import { motion } from 'framer-motion';
-import Zoom from '@mui/material/Zoom';
+
 import './AddWord.css';
 
 const style = {
@@ -33,6 +33,12 @@ function AddWord() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const onClickBackdrop = e => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
 
   const handleExit = () => {
     localStorage.setItem('name', '');
@@ -74,25 +80,15 @@ function AddWord() {
           <div className="info" onClick={handleOpen}>
             <InfoIcon />
           </div>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+          <CSSTransition
+            in={open}
+            unmountOnExit
+            classNames="fades"
+            timeout={250}
           >
-            <Zoom
-              in={open}
-              style={{
-                transitionDelay: open ? '500ms' : '0ms',
-                transform: '',
-              }}
-            >
+            <div className="overlay" onClick={onClickBackdrop}>
               <Box sx={style}>
                 <Typography id="modal-modal-title">
-                  {/* <span className="modal-text">
-              додайте слова в поле вводу, потім натисніть кнопку +, все готово.
-              летс го вчитись
-            </span> */}
                   <span className="modal-text">
                     -додайте слова в поле вводу
                   </span>
@@ -128,8 +124,8 @@ function AddWord() {
                   </span>
                 </Typography>
               </Box>
-            </Zoom>
-          </Modal>
+            </div>
+          </CSSTransition>
         </>
       )}
       {!name && <AuthForm />}

@@ -5,10 +5,8 @@ import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
 import './Form.css';
 import { nanoid } from 'nanoid';
-// import AddTaskIcon from '@mui/icons-material/AddTask';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import { toast } from 'react-toastify';
-// import { async } from '@firebase/util';
 
 function Form() {
   const [en, setEn] = useState('');
@@ -17,7 +15,7 @@ function Form() {
   const [objUser, setObjUser] = useState(null);
   const [succes, setSucces] = useState(false);
 
-  console.log(document.documentElement.scrollHeight);
+  // console.log(document.documentElement.scrollHeight);
   useEffect(() => {
     async function fetch() {
       try {

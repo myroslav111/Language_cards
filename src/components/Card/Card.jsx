@@ -11,10 +11,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+
 import SettingsEthernetSharpIcon from '@mui/icons-material/SettingsEthernetSharp';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import Zoom from '@mui/material/Zoom';
+
 import './Card.css';
 import { red } from '@mui/material/colors';
 
@@ -41,6 +41,12 @@ function Card() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const onClickBackdrop = e => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -138,38 +144,6 @@ function Card() {
                 </span>
               )}
             </div>
-
-            {/* <div className="card" onClick={e => setState(state => !state)}>
-              {loader && (
-                <Box sx={{ display: 'flex' }}>
-                  <CircularProgress sx={{ color: '#ff9800' }} />
-                </Box>
-              )}
-              {word.length > 0 && (
-                <button
-                  id={word[indexWord]?.id}
-                  className="remove__text"
-                  onClick={removeWord}
-                >
-                  <RemoveCircleIcon />
-                </button>
-              )}
-              {word.length > 0 && (
-                <button
-                  id={word[indexWord]?.id}
-                  className="delete__text"
-                  onClick={deleteWord}
-                >
-                  <DeleteForeverIcon />
-                </button>
-              )}
-
-              {word.length > 0 && (
-                <span className="card__text">
-                  {state ? word[indexWord]?.en : word[indexWord]?.ru}
-                </span>
-              )}
-            </div> */}
           </CSSTransition>
         </SwitchTransition>
         <div className="paginator">
@@ -197,26 +171,10 @@ function Card() {
       <div className="info" onClick={handleOpen}>
         <InfoIcon />
       </div>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Zoom
-          in={open}
-          style={{
-            transitionDelay: open ? '500ms' : '0ms',
-            transform: '',
-          }}
-        >
+      <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
+        <div className="overlay" onClick={onClickBackdrop}>
           <Box sx={style}>
             <Typography id="modal-modal-title">
-              {/* <span className="modal-text">
-              додайте слова в поле вводу, потім натисніть кнопку +, все готово.
-              летс го вчитись
-            </span> */}
               <span className="modal-text">
                 - тицай в картку вона покаже переклад
               </span>
@@ -251,8 +209,8 @@ function Card() {
               <span className="modal-text"> - гортаєм слова</span>
             </Typography>
           </Box>
-        </Zoom>
-      </Modal>
+        </div>
+      </CSSTransition>
     </>
   );
 }
