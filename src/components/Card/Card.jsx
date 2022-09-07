@@ -9,9 +9,9 @@ import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import InfoIcon from '@mui/icons-material/Info';
+// import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
-
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 import SettingsEthernetSharpIcon from '@mui/icons-material/SettingsEthernetSharp';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
@@ -104,7 +104,6 @@ function Card() {
   };
   return (
     <>
-      {/*  */}
       <div className="q">
         {/* фнимация с либы */}
         <SwitchTransition>
@@ -174,9 +173,12 @@ function Card() {
         </div>
       </div>
       {/* иконка инфо */}
-      <div className="info" onClick={handleOpen}>
-        <InfoIcon />
-      </div>
+      {!email && (
+        <div className="info__card" onClick={handleOpen}>
+          <PrivacyTipIcon fontSize="large" />
+        </div>
+      )}
+
       {/* анимация */}
       <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
         {/* модалка */}

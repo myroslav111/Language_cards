@@ -1,7 +1,7 @@
 import React from 'react';
 import { singInWithGoogle } from '../../index';
 import { useState, useEffect } from 'react';
-import InfoIcon from '@mui/icons-material/Info';
+// import InfoIcon from '@mui/icons-material/Info';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import StyleIcon from '@mui/icons-material/Style';
@@ -9,6 +9,7 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import AddIcon from '@mui/icons-material/Add';
 import './AuthForm.css';
 import { CSSTransition } from 'react-transition-group';
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 
 const style = {
   position: 'absolute',
@@ -75,7 +76,7 @@ function AuthForm() {
       )}
       {/* иконка инфо */}
       <div className="info" onClick={handleOpen}>
-        <InfoIcon />
+        <PrivacyTipIcon fontSize="large" />
       </div>
 
       <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>

@@ -7,8 +7,8 @@ function ListCard() {
     <motion.div
       style={{
         position: 'absolute',
-        height: '91%',
-        top: '56px',
+        height: '90%',
+        top: '61px',
         // overflow: 'hidden',
         width: '100%',
       }}

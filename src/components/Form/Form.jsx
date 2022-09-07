@@ -61,7 +61,7 @@ function Form() {
       <label>
         EN
         <input
-          type="text"
+          // type="text"
           name="en"
           className="input"
           onChange={e => setEn(e.target.value)}

@@ -87,27 +87,27 @@
 
 .fade-enter {
   /* opacity: 1; */
-  transform: rotateY(0deg);
-  /* transform: rotateY(180deg); */
+  /* transform: rotateY(0deg); */
+  transform: rotateY(85deg);
   /* transform: rotateY(3.142rad); */
-  transition-duration: 2s;
+  /* transition-duration: 2s; */
   /* transition-delay: 1s; */
   /* transition: all 1.8s ease; */
 }
 .fade-exit {
   /* opacity: 0; */
   /* opacity: 1; */
-  transform: rotateY(360deg);
-  /* transform: rotateY(190deg); */
-  transition-duration: 2s;
+  /* transform: rotateY(360deg); */
+  transform: rotateY(0deg);
+  /* transition-duration: 2s; */
   /* transition-delay: 1s; */
   /* transition: all 1.8s ease; */
 }
 .fade-enter-active {
   /* opacity: 1; */
+  /* transform: rotateY(0deg); */
   transform: rotateY(0deg);
-  /* transform: rotateY(180deg); */
-  transition-duration: 2s;
+  /* transition-duration: 2s; */
   /* transition-delay: 1s; */
   /* transition: all 1.8s ease; */
 }
@@ -115,8 +115,8 @@
   /* opacity: 1; */
   /* opacity: 0; */
 
-  transform: rotateY(360deg);
-  /* transform: rotateY(190deg); */
+  /* transform: rotateY(360deg); */
+  transform: rotateY(85deg);
   /* transform: rotateY(3.142rad); */
   transition-duration: 2s;
   /* transition-delay: 1s; */
@@ -126,8 +126,8 @@
 .fade-exit-active {
   /* transition: opacity 500ms; */
   /* transition: transform 1900ms ease; */
-  /* transition: all 0.8s ease; */
-  transition-duration: 2s;
+  transition: all 0.8s ease;
+  /* transition-duration: 2s; */
   /* transition-delay: 2s; */
   /* transition: transform 4500ms; */
 }
