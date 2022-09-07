@@ -8,8 +8,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to bottom right, #ff9800, #ffa726);
-  height: 100vh;
+  /* background-image: linear-gradient(to bottom right, #ff9800, #ffa726); */
+  background: #ff9800;
+  /* height: 100vh; */
   font-family: 'Caveat', cursive;
 }
 
