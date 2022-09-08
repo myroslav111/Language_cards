@@ -12,6 +12,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import TopicIcon from '@mui/icons-material/Topic';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import { NavLink } from 'react-router-dom';
+import GTranslateIcon from '@mui/icons-material/GTranslate';
 // import GoogleIcon from '@mui/icons-material/Google';
 import './FooterMobileUser.css';
 import '../AuthForm/AuthForm.css';
@@ -27,7 +29,6 @@ const FooterMobileUserMaterialUIStyle = {
   boxShadow: 24,
   p: 4,
 };
-
 
 const FooterMobileUser = () => {
   const [email] = useState(localStorage.getItem('email') || '');
@@ -68,6 +69,10 @@ const FooterMobileUser = () => {
               fontSize="large"
               onClick={handleOpen}
             />
+            {/* icon translation link to page*/}
+            <NavLink to="/translate">
+              <GTranslateIcon fontSize="large" color="primary" />
+            </NavLink>
             <HomeIcon color="primary" fontSize="large" onClick={handleClick} />
             <Popper id={id} open={openPoper} anchorEl={anchorEl}>
               <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
@@ -113,7 +118,10 @@ const FooterMobileUser = () => {
                   sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
                 >
                   <LibraryAddIcon fontSize="small" color="secondary" />
-                  <span className="modal-text"> - Місце, де додають картки</span>
+                  <span className="modal-text">
+                    {' '}
+                    - Місце, де додають картки
+                  </span>
                 </Typography>
                 <Typography
                   id="modal-modal-description"
@@ -132,6 +140,6 @@ const FooterMobileUser = () => {
       )}
     </>
   );
-}
+};
 
 export default FooterMobileUser;
