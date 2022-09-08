@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+// import Box from '@mui/material/Box';
+import Popper from '@mui/material/Popper';
+import { Box } from '@mui/material';
+import { red } from '@mui/material/colors';
+import Typography from '@mui/material/Typography';
+import StyleIcon from '@mui/icons-material/Style';
+import AddIcon from '@mui/icons-material/Add';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import HomeIcon from '@mui/icons-material/Home';
 import TopicIcon from '@mui/icons-material/Topic';
-// import GoogleIcon from '@mui/icons-material/Google';
-import { red } from '@mui/material/colors';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import Typography from '@mui/material/Typography';
-import './FoterMobile.css';
-import { Box } from '@mui/material';
-import StyleIcon from '@mui/icons-material/Style';
-import AddIcon from '@mui/icons-material/Add';
-// import Box from '@mui/material/Box';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import Popper from '@mui/material/Popper';
+// import GoogleIcon from '@mui/icons-material/Google';
+import './FooterMobileUser.css';
 import '../AuthForm/AuthForm.css';
 
-const style = {
+const FooterMobileUserMaterialUIStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -29,7 +28,8 @@ const style = {
   p: 4,
 };
 
-function FoterMobile() {
+
+const FooterMobileUser = () => {
   const [email] = useState(localStorage.getItem('email') || '');
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -87,18 +87,18 @@ function FoterMobile() {
             classNames="fades"
             timeout={250}
           >
-            {/* модалка */}
+            {/* modal */}
             <div className="user__modal" onClick={onClickBackdrop}>
-              <Box sx={style}>
+              <Box sx={FooterMobileUserMaterialUIStyle}>
                 <Typography id="modal-modal-title">
                   <span className="modal-text">
-                    -додайте слова в поле вводу
+                    - додайте слова в поле вводу
                   </span>
                   <br />
-                  <span className="modal-text">-потім натисніть кнопку +</span>
+                  <span className="modal-text">- потім натисніть кнопку +</span>
                   <br />
                   <span className="modal-text">
-                    -все готово. летс го вчитись 🚀
+                    - все готово. летс го вчитись 🚀
                   </span>
                 </Typography>
                 <Typography
@@ -113,7 +113,7 @@ function FoterMobile() {
                   sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
                 >
                   <LibraryAddIcon fontSize="small" color="secondary" />
-                  <span className="modal-text"> - Місце де додають картки</span>
+                  <span className="modal-text"> - Місце, де додають картки</span>
                 </Typography>
                 <Typography
                   id="modal-modal-description"
@@ -134,4 +134,4 @@ function FoterMobile() {
   );
 }
 
-export default FoterMobile;
+export default FooterMobileUser;

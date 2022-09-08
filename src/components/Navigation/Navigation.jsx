@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import StyleIcon from '@mui/icons-material/Style';
-import './Navigation.css';
-import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { useState } from 'react';
+import Avatar from '@mui/material/Avatar';
+import StyleIcon from '@mui/icons-material/Style';
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import 'animate.css';
+import './Navigation.css';
 
-function Navigation() {
+
+const Navigation = () => {
   const [name] = useState(localStorage.getItem('name') || '');
   const [image] = useState(localStorage.getItem('profilePic') || '');
 
@@ -18,7 +18,7 @@ function Navigation() {
         <NavLink to="/" className="link">
           <LibraryAddIcon />
         </NavLink>
-        {/* иконка фотки б аватар */}
+        {/* icon-photo, avatar */}
         <Stack
           direction="row"
           spacing={2}
@@ -38,5 +38,6 @@ function Navigation() {
     </div>
   );
 }
+
 
 export default Navigation;

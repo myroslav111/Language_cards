@@ -1,10 +1,14 @@
-import AddWord from 'components/pages/AddWord';
-import ListCard from 'components/pages/ListCard';
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+
 import TranslationPage from 'components/pages/TranslationPage';
+
+import AddWord from 'pages/AddWord';
+import ListCard from 'pages/ListCard';
+
 // import { AnimatePresence } from 'framer-motion/dist/framer-motion';
+
 
 function AnimateRoutes() {
   const location = useLocation();
@@ -18,5 +22,6 @@ function AnimateRoutes() {
     </AnimatePresence>
   );
 }
+
 
 export default AnimateRoutes;

@@ -2,7 +2,8 @@ import firstApi from 'axios';
 
 // firstApi.defaults.baseURL = 'https://6310ad45826b98071a47c864.mockapi.io';
 
-async function getWords() {
+// async function getWords
+async function getAllWords() {
   const { data } = await firstApi.get(
     'https://6310ad45826b98071a47c864.mockapi.io/lang'
   );
@@ -27,9 +28,10 @@ async function deleteWord(id) {
 }
 
 const api = {
-  getWords: getWords,
+  getAllWords: getAllWords,
   addWord: addWord,
   deleteWord: deleteWord,
 };
+
 
 export default api;
