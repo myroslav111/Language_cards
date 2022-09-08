@@ -12,12 +12,21 @@ import FooterMobileUser from './FooterMobileUser';
 import './App.css';
 
 
+// import getTranslate from 'service/apiTranslate';
+
+
+
 export const App = () => {
   return (
     <div style={{ height: '100%' }}>
       <Navigation />
       <AnimateRoutes />
+
+
+
+
       <FooterMobileUser />
+
       <ToastContainer autoClose={3000} />
     </div>
   );
