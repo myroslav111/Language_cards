@@ -10,6 +10,8 @@ import AddIcon from '@mui/icons-material/Add';
 import './AuthForm.css';
 import { CSSTransition } from 'react-transition-group';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
+import GTranslateIcon from '@mui/icons-material/GTranslate';
+import { NavLink } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -74,8 +76,37 @@ function AuthForm() {
           </div>
         </div>
       )}
+      {/* icon translation link to page*/}
+      <NavLink to="/translate">
+        <div
+          className="translate"
+          // style={{
+          //   background: 'white',
+          //   width: '37px',
+          //   height: '37px',
+          //   display: 'flex',
+          //   alignItems: 'center',
+          //   justifyContent: 'center',
+          //   borderRadius: '8px',
+          // }}
+        >
+          <GTranslateIcon fontSize="large" color="primary" />
+        </div>
+      </NavLink>
       {/* иконка инфо */}
-      <div className="info" onClick={handleOpen}>
+      <div
+        className="info"
+        onClick={handleOpen}
+        // style={{
+        //   background: 'white',
+        //   width: '37px',
+        //   height: '37px',
+        //   display: 'flex',
+        //   alignItems: 'center',
+        //   justifyContent: 'center',
+        //   borderRadius: '8px',
+        // }}
+      >
         <PrivacyTipIcon fontSize="large" />
       </div>
 

@@ -3,6 +3,7 @@ import ListCard from 'components/pages/ListCard';
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import TranslationPage from 'components/pages/TranslationPage';
 // import { AnimatePresence } from 'framer-motion/dist/framer-motion';
 
 function AnimateRoutes() {
@@ -12,6 +13,7 @@ function AnimateRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<AddWord />} />
         <Route path="/cards" element={<ListCard />} />
+        <Route path="/translate" element={<TranslationPage />} />
       </Routes>
     </AnimatePresence>
   );

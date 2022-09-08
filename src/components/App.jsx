@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import AnimateRoutes from './AnimateRoutes';
 import FooterMobile from './FooterMobile';
+// import getTranslate from 'service/apiTranslate';
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
       <Navigation />
       <AnimateRoutes />
       <FooterMobile />
+
       <ToastContainer autoClose={3000} />
     </div>
   );

@@ -82,6 +82,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: white;
+  width: 37px;
+  height: 37px;
+  border-radius: 8px;
+}
+
+.translate {
+  background: white;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
 }
 
 .info__card {
