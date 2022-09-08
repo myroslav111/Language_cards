@@ -14,7 +14,6 @@ import { NavLink } from 'react-router-dom';
 import { signInWithGoogle } from 'index';
 import './AuthForm.css';
 
-
 const AuthFormMaterialUIStyle = {
   position: 'absolute',
   top: '50%',
@@ -28,7 +27,6 @@ const AuthFormMaterialUIStyle = {
   maxWidth: 'calc(100vw - 48px)',
   maxHeight: 'calc(100vh - 24px)',
 };
-
 
 function AuthForm() {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
@@ -64,7 +62,7 @@ function AuthForm() {
             <img className="google-icon" src={src} alt="icon" />
           </div>
           <p className="btn-text">
-            <b className="text-g"> Гоу реєструватись через Google</b>
+            <b className="text-g"> Го реєструватись via Google</b>
           </p>
         </div>
       ) : (
@@ -111,9 +109,6 @@ function AuthForm() {
         //   borderRadius: '8px',
         // }}
       >
-
-
-
         <PrivacyTipIcon fontSize="large" />
       </div>
 
@@ -126,7 +121,9 @@ function AuthForm() {
               <br />
               <span className="modal-text">- потім натисніть кнопку +</span>
               <br />
-              <span className="modal-text">- все готово, летс гоу вчитись 🚀 </span>
+              <span className="modal-text">
+                - все готово, летс гоу вчитись 🚀{' '}
+              </span>
             </Typography>
             <Typography
               id="modal-modal-description"
@@ -158,6 +155,5 @@ function AuthForm() {
     </>
   );
 }
-
 
 export default AuthForm;

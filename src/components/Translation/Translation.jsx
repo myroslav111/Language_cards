@@ -59,10 +59,10 @@ function Translation() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '100%',
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        height: '90vh',
+        width: '80vw',
+        // marginRight: 'auto',
+        // marginLeft: 'auto',
+        height: '80vh',
         position: 'absolute',
         top: '60px',
       }}
@@ -80,10 +80,11 @@ function Translation() {
           justifyContent: 'center',
           marginTop: '10px',
           marginBottom: '10px',
+          marginLeft: '60px',
         }}
       >
         {/* select */}
-        <Box sx={{ minWidth: 80, marginRight: '5px' }}>
+        <Box sx={{ marginRight: '5px' }}>
           <FormControl>
             <InputLabel
               id="demo-simple-select-label"
@@ -116,11 +117,9 @@ function Translation() {
           onChange={e => setTextForTranslate(e.target.value)}
           maxRows={18}
           aria-label="maximum height"
-          placeholder=" запиши або встав сюди текст
-          ....
-          ....
-          .... "
+          placeholder="встав сюди текст"
           style={{
+            height: 200,
             width: 250,
             border: 'none',
             borderRadius: '8px',
@@ -141,11 +140,12 @@ function Translation() {
           alignContent: 'center',
           justifyContent: 'center',
           marginTop: '10px',
+          marginLeft: '60px',
         }}
       >
         {/* <span>en</span> */}
         {/* select */}
-        <Box sx={{ minWidth: 80, marginRight: '5px' }}>
+        <Box sx={{ marginRight: '5px' }}>
           <FormControl>
             <InputLabel
               id="demo-simple-select-label"
@@ -172,15 +172,14 @@ function Translation() {
         </Box>
         {/* textarea */}
         <TextareaAutosize
+          disabled
           maxRows={18}
           aria-label="maximum height"
-          placeholder="тут буде переклад
-          ....
-          ....
-          ...."
+          placeholder="тут буде переклад"
           // defaultValue=""
           value={translated}
           style={{
+            height: 200,
             width: 250,
             border: 'none',
             borderRadius: '8px',
@@ -198,9 +197,10 @@ function Translation() {
         direction="row"
         sx={{
           marginTop: '10px',
-          width: '400px',
+          // width: '400px',
           justifyContent: 'space-around',
           // padding: '5px',
+          marginLeft: '145px',
         }}
       >
         <div
