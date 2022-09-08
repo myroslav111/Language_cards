@@ -1,24 +1,22 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import Box from '@mui/material/Box';
+import { red } from '@mui/material/colors';
+import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
+// import InfoIcon from '@mui/icons-material/Info';
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import api from 'service/api';
-import apiSecond from 'service/apiForRegistered';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-// import InfoIcon from '@mui/icons-material/Info';
-import Typography from '@mui/material/Typography';
-import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 import SettingsEthernetSharpIcon from '@mui/icons-material/SettingsEthernetSharp';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-
+import api from 'service/api';
+import apiSecond from 'service/apiForRegistered';
 import './Card.css';
-import { red } from '@mui/material/colors';
-// материал юа стили
-const style = {
+
+const CardMaterialUIStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -29,6 +27,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
 
 function Card() {
   const [state, setState] = useState(true);
@@ -53,7 +52,7 @@ function Card() {
       setLoader(true);
       try {
         if (!email) {
-          const data = await api.getWords();
+          const data = await api.getAllWords();
           setWord(data);
         }
         if (email) {
@@ -105,7 +104,7 @@ function Card() {
   return (
     <>
       <div className="q">
-        {/* фнимация с либы */}
+        {/* animation from library */}
         <SwitchTransition>
           <CSSTransition
             key={state ? 'Goodbye, world!' : 'Hello, world!'}
@@ -114,7 +113,7 @@ function Card() {
             }
             classNames="fade"
           >
-            {/* чорна карточка */}
+            {/* black card */}
             <div className="card" onClick={e => setState(state => !state)}>
               {loader && (
                 <Box sx={{ display: 'flex' }}>
@@ -148,7 +147,7 @@ function Card() {
             </div>
           </CSSTransition>
         </SwitchTransition>
-        {/* кнопка в лево в право стрелки */}
+        {/* buttons to the left and to the right */}
         <div className="paginator">
           {indexWord > 0 ? (
             <span
@@ -167,33 +166,33 @@ function Card() {
             </span>
           ) : null}
         </div>
-        {/* строка в низу карточек количество слов */}
+        {/* words count */}
         <div className="description__wrap">
           <span>{word.length} - Words</span>
         </div>
       </div>
-      {/* иконка инфо */}
+      {/* info icon */}
       {!email && (
         <div className="info__card" onClick={handleOpen}>
           <PrivacyTipIcon fontSize="large" />
         </div>
       )}
 
-      {/* анимация */}
+      {/* animation */}
       <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
-        {/* модалка */}
+        {/* modal */}
         <div className="overlay" onClick={onClickBackdrop}>
-          <Box sx={style}>
+          <Box sx={CardMaterialUIStyle}>
             <Typography id="modal-modal-title">
               <span className="modal-text">
-                - тицай в картку вона покаже переклад
+                - тицяй в картку i вона покаже переклад
               </span>
               <br />
               <span className="modal-text">
-                - тицай в картку повторно вона сховає переклад
+                - тицяй в картку повторно i вона сховає переклад
               </span>
               <br />
-              <span className="modal-text">летс го вчитись 🚀</span>
+              <span className="modal-text"> летс гоу вчитись 🚀</span>
             </Typography>
             <Typography
               id="modal-modal-description"
@@ -201,7 +200,7 @@ function Card() {
             >
               <RemoveCircleOutlineIcon fontSize="small" color="primary" />
               <span className="modal-text">
-                - видалення картки на поточну сессію
+                - видалення картки з поточної сесії
               </span>
             </Typography>
             <Typography
@@ -224,5 +223,6 @@ function Card() {
     </>
   );
 }
+
 
 export default Card;

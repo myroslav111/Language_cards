@@ -1,9 +1,9 @@
-import AuthForm from 'components/AuthForm';
-import Form from 'components/Form';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Form from 'components/Form';
+import AuthForm from 'components/AuthForm';
 import './AddWord.css';
+
 
 function AddWord() {
   const [name] = useState(localStorage.getItem('name') || '');
@@ -36,5 +36,6 @@ function AddWord() {
     </motion.div>
   );
 }
+
 
 export default AddWord;

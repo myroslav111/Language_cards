@@ -1,6 +1,7 @@
 import React from 'react';
-import Card from 'components/Card';
 import { motion } from 'framer-motion';
+import Card from 'components/Card';
+
 
 function ListCard() {
   return (
@@ -25,5 +26,6 @@ function ListCard() {
     </motion.div>
   );
 }
+
 
 export default ListCard;
