@@ -1,17 +1,16 @@
-import React from 'react';
-import { singInWithGoogle } from '../../index';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 // import InfoIcon from '@mui/icons-material/Info';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add';
 import StyleIcon from '@mui/icons-material/Style';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import AddIcon from '@mui/icons-material/Add';
-import './AuthForm.css';
-import { CSSTransition } from 'react-transition-group';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
+import { signInWithGoogle } from 'index';
+import './AuthForm.css';
 
-const style = {
+const AuthFormMaterialUIStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -25,6 +24,7 @@ const style = {
   maxHeight: 'calc(100vh - 24px)',
 };
 
+
 function AuthForm() {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [src] = useState(
@@ -37,8 +37,8 @@ function AuthForm() {
   useEffect(() => {}, [email]);
 
   const handleSubmit = () => {
-    setEmail('ysetEmail');
-    singInWithGoogle();
+    setEmail('setEmail');
+    signInWithGoogle();
   };
 
   const handleUpDate = () => {
@@ -59,7 +59,7 @@ function AuthForm() {
             <img className="google-icon" src={src} alt="icon" />
           </div>
           <p className="btn-text">
-            <b className="text-g">го реєструватись через google</b>
+            <b className="text-g"> Гоу реєструватись через Google</b>
           </p>
         </div>
       ) : (
@@ -74,23 +74,21 @@ function AuthForm() {
           </div>
         </div>
       )}
-      {/* иконка инфо */}
+      {/* info icon */}
       <div className="info" onClick={handleOpen}>
         <PrivacyTipIcon fontSize="large" />
       </div>
 
       <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
-        {/* модалка */}
+        {/* modal */}
         <div className="overlay" onClick={onClickBackdrop}>
-          <Box sx={style}>
+          <Box sx={AuthFormMaterialUIStyle}>
             <Typography id="modal-modal-title">
-              <span className="modal-text">-додайте слова в поле вводу</span>
+              <span className="modal-text">- додайте слова у поле вводу</span>
               <br />
-              <span className="modal-text">-потім натисніть кнопку +</span>
+              <span className="modal-text">- потім натисніть кнопку +</span>
               <br />
-              <span className="modal-text">
-                -все готово. летс го вчитись 🚀
-              </span>
+              <span className="modal-text">- все готово, летс гоу вчитись 🚀 </span>
             </Typography>
             <Typography
               id="modal-modal-description"
@@ -104,7 +102,7 @@ function AuthForm() {
               sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
             >
               <LibraryAddIcon fontSize="small" color="secondary" />
-              <span className="modal-text"> - Місце де додають картки</span>
+              <span className="modal-text"> - Місце, де додають картки</span>
             </Typography>
             <Typography
               id="modal-modal-description"
@@ -113,7 +111,7 @@ function AuthForm() {
               <AddIcon fontSize="small" color="success" />
               <span className="modal-text">
                 {' '}
-                - кнопка додає слова до карток
+                - кнопка додає слово до карток
               </span>
             </Typography>
           </Box>
@@ -122,5 +120,6 @@ function AuthForm() {
     </>
   );
 }
+
 
 export default AuthForm;

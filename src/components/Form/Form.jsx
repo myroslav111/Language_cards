@@ -1,19 +1,19 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
-import './Form.css';
 import { nanoid } from 'nanoid';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import { toast } from 'react-toastify';
+import './Form.css';
+
 
 function Form() {
   const [en, setEn] = useState('');
   const [ru, setRu] = useState('');
   const [email] = useState(localStorage.getItem('email') || '');
   const [objUser, setObjUser] = useState(null);
-  const [succes, setSucces] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   // console.log(document.documentElement.scrollHeight);
   useEffect(() => {
@@ -34,8 +34,8 @@ function Form() {
 
   const handleSubmit = async e => {
     // e.preventDefault()
-    if (!en || !ru) return toast.warn('🦄 ви повинні додати слово');
-    setSucces(true);
+    if (!en || !ru) return toast.warn('🦄 Ви повинні додати слово.');
+    setSuccess(true);
     let idCard = nanoid();
     if (!email) {
       api.addWord({ en, ru });
@@ -47,16 +47,16 @@ function Form() {
       });
     }
     // console.log(objUser);
-    toast.success('🚀 ми додали слово до ваших карток!');
+    toast.success('🚀 Ми додали слово до ваших карток!');
     setEn('');
     setRu('');
-    setSucces(false);
+    setSuccess(false);
   };
 
   return (
     <>
       {/* заголовок  */}
-      <h1>Add words for learn</h1>
+      <h1>Додай слово для вивчення</h1>
       {/* инпут 1 */}
       <label>
         EN
@@ -82,7 +82,7 @@ function Form() {
       </label>
 
       <button onClick={handleSubmit} type="submit" className="button__add">
-        {!succes ? (
+        {!success ? (
           <AddCircleOutlineIcon />
         ) : (
           <ThumbUpAltIcon sx={{ color: 'green' }} />
@@ -91,5 +91,6 @@ function Form() {
     </>
   );
 }
+
 
 export default Form;

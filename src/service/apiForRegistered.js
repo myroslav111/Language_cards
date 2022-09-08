@@ -19,7 +19,7 @@ async function addWordAuth(id, word) {
   return data;
 }
 
-async function addUsder(obj) {
+async function addUser(obj) {
   const { data } = await secondApi.post(
     'https://63126265b466aa9b03896a0c.mockapi.io/user-lang',
     obj
@@ -39,7 +39,8 @@ const apiSecond = {
   getWordsAuth: getWordsAuth,
   addWordAuth: addWordAuth,
   deleteWordAuth: deleteWordAuth,
-  addUsder: addUsder,
+  addUser: addUser,
 };
+
 
 export default apiSecond;
