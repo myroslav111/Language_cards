@@ -37,36 +37,6 @@
   align-items: center;
 }
 
-.remove__text {
-  background: none;
-  color: white;
-  border: none;
-  /* padding: 0; */
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 50px;
-}
-
-.delete__text {
-  background: none;
-  color: white;
-  border: none;
-  /* padding: 0; */
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 50px;
-}
-
 .paginator__btn {
   display: flex;
   justify-content: center;

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 // import InfoIcon from '@mui/icons-material/Info';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+// import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -15,6 +15,10 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
 import './Card.css';
+// import { ordinal } from '@firebase/util';
+import SoundButton from 'components/SoundButton/SoundButton';
+import DeleteWord from 'components/DeleteWord';
+import RemoveWord from 'components/RemoveWord';
 
 const CardMaterialUIStyle = {
   position: 'absolute',
@@ -27,7 +31,6 @@ const CardMaterialUIStyle = {
   boxShadow: 24,
   p: 4,
 };
-
 
 function Card() {
   const [state, setState] = useState(true);
@@ -68,39 +71,6 @@ function Card() {
     })();
   }, [email]);
 
-  const removeWord = e => {
-    e.stopPropagation();
-    if (word[indexWord]?.id) {
-      setWord(word.filter(w => w.id !== word[+indexWord].id));
-    }
-    if (word[indexWord]?.idCard) {
-      setWord(word.filter(w => w.idCard !== word[+indexWord].idCard));
-    }
-    return;
-  };
-
-  const deleteWord = async e => {
-    e.stopPropagation();
-    if (word[indexWord]?.id) {
-      try {
-        api.deleteWord(word[indexWord]?.id);
-        setWord(word.filter(w => w.id !== word[+indexWord].id));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (word[indexWord]?.idCard) {
-      try {
-        userObj.data = [
-          ...userObj.data.filter(w => w.idCard !== word[+indexWord].idCard),
-        ];
-        setWord(word.filter(w => w.idCard !== word[+indexWord].idCard));
-        apiSecond.addWordAuth(userObj.id, userObj);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
   return (
     <>
       <div className="q">
@@ -120,24 +90,22 @@ function Card() {
                   <CircularProgress sx={{ color: '#ff9800' }} />
                 </Box>
               )}
-              {word.length > 0 && (
-                <button
-                  id={word[indexWord]?.id}
-                  className="remove__text"
-                  onClick={removeWord}
-                >
-                  <RemoveCircleIcon />
-                </button>
-              )}
-              {word.length > 0 && (
-                <button
-                  id={word[indexWord]?.id}
-                  className="delete__text"
-                  onClick={deleteWord}
-                >
-                  <DeleteForeverIcon />
-                </button>
-              )}
+
+              {/* кнопка поставити в чергу картку (з перевіркою) */}
+              <RemoveWord
+                onWord={word}
+                onSetWord={setWord}
+                onIndexWord={indexWord}
+              />
+              {/* кнопка видалення картки (з перевіркою)*/}
+              <DeleteWord
+                onWord={word}
+                onSetWord={setWord}
+                onIndexWord={indexWord}
+                onUserObj={userObj}
+              />
+              {/* кнопка озвучування картки тексту (Англійська) (з перевіркою)*/}
+              <SoundButton onWord={word} onIndexWord={indexWord} />
 
               {word.length > 0 && (
                 <span className="card__text">
@@ -223,6 +191,5 @@ function Card() {
     </>
   );
 }
-
 
 export default Card;
