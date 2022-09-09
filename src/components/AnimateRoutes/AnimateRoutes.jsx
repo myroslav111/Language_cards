@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import TranslationPage from 'components/pages/TranslationPage';
+import TranslationPage from 'pages/TranslationPage';
 
 import AddWord from 'pages/AddWord';
 import ListCard from 'pages/ListCard';

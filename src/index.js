@@ -35,7 +35,7 @@ export const signInWithGoogle = () => {
       // console.log(email);
       (async () => {
         // запрос на получение данных всех зарегистрированных в приложении пользователей 
-        const dataRegistered = await apiSecond.getWordsAuth();    // rename to getUserAuth and add to apiRegistered
+        const dataRegistered = await apiSecond.getUserAuth();    // rename to getUserAuth and add to apiRegistered
         // console.log(dataRegistered);
         const userEmail = dataRegistered.some(user => user.email === email);
         // console.log(userEmail);
@@ -50,7 +50,7 @@ export const signInWithGoogle = () => {
           apiSecond.addUser(userObj);
         }
       })();
-      // record to localStorage users data
+      // record user data to localStorage 
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('profilePic', profilePic);
