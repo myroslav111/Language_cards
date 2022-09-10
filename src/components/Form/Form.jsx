@@ -19,7 +19,7 @@ function Form() {
   useEffect(() => {
     async function fetch() {
       try {
-        const data = await apiSecond.getWordsAuth();
+        const data = await apiSecond.getAllWordsAuth();
         const id = data.find(e => e.email === email);
         // setIdUser(id);
         setObjUser(id);

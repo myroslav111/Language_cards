@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import getTranslate from 'service/apiTranslate';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-import { useNavigate, useLocation } from 'react-router-dom';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ReplyIcon from '@mui/icons-material/Reply';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import getTranslate from 'service/apiTranslate';
+
 
 function Translation() {
-  const [lengFrom, setLengFrom] = useState('en');
-  const [lengTo, setLengTo] = useState('uk');
+  const [fromLanguage, setFromLanguage] = useState('en');
+  const [toLanguage, setToLanguage] = useState('uk');
   const [textForTranslate, setTextForTranslate] = useState('');
   const [translated, setTranslated] = useState('');
 
@@ -31,14 +31,14 @@ function Translation() {
 
   const handleTranslate = async () => {
     if (!textForTranslate) {
-      toast.warn('🦄 Додай слово для перекладу!');
+      toast.warn('🦄 Додай слово для перекладу !');
       return;
     }
     try {
       const { responseData } = await getTranslate(
         textForTranslate,
-        lengFrom,
-        lengTo
+        fromLanguage,
+        toLanguage
       );
       setTranslated(responseData.translatedText);
     } catch (error) {
@@ -47,11 +47,11 @@ function Translation() {
   };
 
   const handleChangeFrom = event => {
-    setLengFrom(event.target.value);
+    setFromLanguage(event.target.value);
   };
 
   const handleChangeTo = event => {
-    setLengTo(event.target.value);
+    setToLanguage(event.target.value);
   };
   return (
     <div
@@ -101,8 +101,8 @@ function Translation() {
               }}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={lengFrom}
-              label="leng"
+              value={fromLanguage}
+              label="lang"
               onChange={handleChangeFrom}
             >
               <MenuItem value={'en'}>EN</MenuItem>
@@ -160,8 +160,8 @@ function Translation() {
               }}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={lengTo}
-              label="leng"
+              value={toLanguage}
+              label="lang"
               onChange={handleChangeTo}
             >
               <MenuItem value={'en'}>EN</MenuItem>
@@ -252,5 +252,6 @@ function Translation() {
     </div>
   );
 }
+
 
 export default Translation;

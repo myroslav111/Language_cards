@@ -59,7 +59,7 @@ function Card() {
           setWord(data);
         }
         if (email) {
-          const dataRegistered = await apiSecond.getWordsAuth();
+          const dataRegistered = await apiSecond.getAllWordsAuth();
           const user = dataRegistered.filter(user => user.email === email);
           setUserObj(user[0]);
           setWord(user[0].data);
