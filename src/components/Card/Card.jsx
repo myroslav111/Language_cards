@@ -1,36 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import Box from '@mui/material/Box';
-import { red } from '@mui/material/colors';
-import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
-// import InfoIcon from '@mui/icons-material/Info';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
-// import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import SettingsEthernetSharpIcon from '@mui/icons-material/SettingsEthernetSharp';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
 import './Card.css';
-// import { ordinal } from '@firebase/util';
 import SoundButton from 'components/SoundButton/SoundButton';
 import DeleteWord from 'components/DeleteWord';
 import RemoveWord from 'components/RemoveWord';
-
-const CardMaterialUIStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '70%',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import ModalInfo from 'components/ModalInfo';
 
 function Card() {
   const [state, setState] = useState(true);
@@ -40,15 +21,8 @@ function Card() {
   const [email] = useState(localStorage.getItem('email') || '');
   const [loader, setLoader] = useState(false);
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const onClickBackdrop = e => {
-    if (e.target === e.currentTarget) {
-      handleClose();
-    }
-  };
 
   useEffect(() => {
     (async () => {
@@ -146,48 +120,8 @@ function Card() {
         </div>
       )}
 
-      {/* animation */}
-      <CSSTransition in={open} unmountOnExit classNames="fades" timeout={250}>
-        {/* modal */}
-        <div className="overlay" onClick={onClickBackdrop}>
-          <Box sx={CardMaterialUIStyle}>
-            <Typography id="modal-modal-title">
-              <span className="modal-text">
-                - тицяй в картку i вона покаже переклад
-              </span>
-              <br />
-              <span className="modal-text">
-                - тицяй в картку повторно i вона сховає переклад
-              </span>
-              <br />
-              <span className="modal-text"> летс гоу вчитись 🚀</span>
-            </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-            >
-              <RemoveCircleOutlineIcon fontSize="small" color="primary" />
-              <span className="modal-text">
-                - видалення картки з поточної сесії
-              </span>
-            </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-            >
-              <DeleteForeverIcon fontSize="small" sx={{ color: red[500] }} />
-              <span className="modal-text"> - видалення картки назавжди</span>
-            </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
-            >
-              <SettingsEthernetSharpIcon fontSize="small" color="success" />
-              <span className="modal-text"> - гортаєм слова</span>
-            </Typography>
-          </Box>
-        </div>
-      </CSSTransition>
+      {/* modal */}
+      <ModalInfo onOpen={open} onSetOpen={setOpen} />
     </>
   );
 }
