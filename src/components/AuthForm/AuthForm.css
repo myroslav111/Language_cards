@@ -1,16 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .google-btn {
-  width: 204px;
-  height: 42px;
+  width: 190px;
+  height: 30px;
   background-color: #f57c00;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   /* margin-left: auto;
   margin-right: auto; */
-  bottom: 5px;
-  right: 5px;
+  /* bottom: 45px; */
+  /* right: 45px; */
+  display: flex;
+  align-items: center;
+  /* box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 @media screen and (max-height: 600px) {
@@ -20,25 +29,39 @@
 }
 
 .google-btn .google-icon-wrapper {
-  position: absolute;
+  /* position: absolute; */
   /* margin-top: 1px; */
   /* margin-left: 1px; */
+  /* width: 40px; */
+  /* height: 40px; */
+  /* height: 100%; */
+  /* border-radius: 2px; */
+  /* background-color: orange; */
   width: 40px;
   /* height: 40px; */
   height: 100%;
   border-radius: 2px;
+  display: flex;
   background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px; */
 }
 .google-btn .google-icon {
-  position: absolute;
-  margin-top: 11px;
-  margin-left: 11px;
+  /* position: absolute; */
+  /* margin-top: 11px; */
+  /* margin-left: 11px; */
   width: 18px;
-  height: 18px;
+  height: 16px;
 }
 .google-btn .btn-text {
   float: right;
-  margin: 11px 11px 0 0;
+  margin: 0 0 0 5px;
   color: #fff;
   font-size: 14px;
   letter-spacing: 0.2px;
@@ -64,42 +87,45 @@
 
 .screensaver {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: hsla(0, 0%, 100%, 0.7);
   backdrop-filter: blur(5px);
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info {
-  position: absolute;
+  /* position: absolute;
   bottom: 10px;
-  left: 10px;
+  left: 10px; */
   margin: 0;
   color: green;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+  /* background: white; */
   width: 37px;
   height: 37px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   cursor: pointer;
 }
 
 .translate {
-  background: white;
+  /* background: white; */
   width: 37px;
   height: 37px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  position: absolute;
+  /* position: absolute;
   bottom: 10px;
-  left: 50px;
+  left: 50px; */
 }
 
 .info__card {
