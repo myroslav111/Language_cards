@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
+import React, { useState } from 'react';
 import GTranslateIcon from '@mui/icons-material/GTranslate';
 import { NavLink } from 'react-router-dom';
 import { signInWithGoogle } from 'index';
 import './AuthForm.css';
 import ModalInfo from 'components/ModalInfo';
+import FooterContainer from 'components/FooterContainer';
+import ButtonGoogleAuth from 'components/ButtonGoogleAuth';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 
 function AuthForm() {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
-  const [src] = useState(
-    'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
-  );
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-
-  useEffect(() => {}, [email]);
 
   const handleSubmit = () => {
     setEmail('setEmail');
@@ -27,62 +25,33 @@ function AuthForm() {
 
   return (
     <>
-      {!email ? (
-        <div className="google-btn" onClick={handleSubmit}>
-          <div className="google-icon-wrapper">
-            <img className="google-icon" src={src} alt="icon" />
-          </div>
-          <p className="btn-text">
-            <b className="text-g"> Го реєструватись via Google</b>
-          </p>
-        </div>
-      ) : (
-        <div className="screensaver">
-          <div className="google-btn color" onClick={handleUpDate}>
-            <div className="google-icon-wrapper">
-              <img className="google-icon" src={src} alt="icon" />
-            </div>
-            <p className="btn-text text-button-green">
-              <b>Go</b>
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* icon translation link to page*/}
-      <NavLink to="/translate">
-        <div
-          className="translate"
-          // style={{
-          //   background: 'white',
-          //   width: '37px',
-          //   height: '37px',
-          //   display: 'flex',
-          //   alignItems: 'center',
-          //   justifyContent: 'center',
-          //   borderRadius: '8px',
-          // }}
-        >
+      <FooterContainer>
+        {/* иконка инфо */}
+        <HelpCenterIcon
+          color="secondary"
+          fontSize="large"
+          onClick={handleOpen}
+        />
+        {/* icon translation link to page*/}
+        <NavLink to="/translate">
+          {/* <div className="translate"> */}
           <GTranslateIcon fontSize="large" color="primary" />
-        </div>
-      </NavLink>
-      {/* иконка инфо */}
-      <div
-        className="info"
-        onClick={handleOpen}
-        // style={{
-        //   background: 'white',
-        //   width: '37px',
-        //   height: '37px',
-        //   display: 'flex',
-        //   alignItems: 'center',
-        //   justifyContent: 'center',
-        //   borderRadius: '8px',
-        // }}
-      >
-        <PrivacyTipIcon fontSize="large" />
-      </div>
-
+          {/* </div> */}
+        </NavLink>
+        {!email ? (
+          <ButtonGoogleAuth
+            handleSubmit={handleSubmit}
+            text={'Го реєструватись via Google'}
+          />
+        ) : (
+          <div className="screensaver">
+            <ButtonGoogleAuth
+              handleSubmit={handleUpDate}
+              text={'Go finished'}
+            />
+          </div>
+        )}
+      </FooterContainer>{' '}
       {/* Modal */}
       <ModalInfo onOpen={open} onSetOpen={setOpen} />
     </>
