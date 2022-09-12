@@ -4,6 +4,7 @@ import api from 'service/api';
 import apiSecond from 'service/apiForRegistered';
 import './DeleteWord.css';
 
+
 const DeleteWord = ({ onWord, onSetWord, onIndexWord, onUserObj }) => {
   const deleteWord = async e => {
     e.stopPropagation();
@@ -30,6 +31,7 @@ const DeleteWord = ({ onWord, onSetWord, onIndexWord, onUserObj }) => {
     }
   };
 
+
   return (
     <>
       {onWord.length > 0 && (
@@ -44,5 +46,6 @@ const DeleteWord = ({ onWord, onSetWord, onIndexWord, onUserObj }) => {
     </>
   );
 };
+
 
 export default DeleteWord;

@@ -2,6 +2,7 @@ import React from 'react';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './SoundButton.css';
 
+
 const SoundButton = ({ onWord, onIndexWord }) => {
   // логіка кнопки озвучування
   const handleClickSound = e => {
@@ -24,6 +25,7 @@ const SoundButton = ({ onWord, onIndexWord }) => {
     e.stopPropagation();
   };
 
+
   return (
     <>
       {onWord.length > 0 && (
@@ -36,5 +38,6 @@ const SoundButton = ({ onWord, onIndexWord }) => {
     </>
   );
 };
+
 
 export default SoundButton;

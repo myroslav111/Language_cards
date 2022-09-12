@@ -13,6 +13,7 @@ import FooterContainer from 'components/FooterContainer/FooterContainer';
 import './FooterMobileUser.css';
 import '../AuthForm/AuthForm.css';
 
+
 const FooterMobileUser = () => {
   const [email] = useState(localStorage.getItem('email') || '');
   const [open, setOpen] = useState(false);
@@ -34,6 +35,7 @@ const FooterMobileUser = () => {
 
     document.location.reload();
   };
+
 
   return (
     <>
@@ -85,5 +87,6 @@ const FooterMobileUser = () => {
     </>
   );
 };
+
 
 export default FooterMobileUser;

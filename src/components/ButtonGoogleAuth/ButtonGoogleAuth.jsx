@@ -1,9 +1,11 @@
 import React from 'react';
 
+
 function ButtonGoogleAuth({ text, handleSubmit }) {
   const src =
     'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg';
 
+  
   return (
     <>
       <div className="google-btn" onClick={handleSubmit}>
@@ -17,6 +19,7 @@ function ButtonGoogleAuth({ text, handleSubmit }) {
     </>
   );
 }
+
 
 // Го реєструватись via Google
 export default ButtonGoogleAuth;

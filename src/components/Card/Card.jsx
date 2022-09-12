@@ -11,6 +11,7 @@ import SoundButton from 'components/SoundButton/SoundButton';
 import DeleteWord from 'components/DeleteWord';
 import RemoveWord from 'components/RemoveWord';
 
+
 function Card() {
   const [state, setState] = useState(true);
   const [indexWord, setIndexWord] = useState(0);
@@ -18,6 +19,7 @@ function Card() {
   const [userObj, setUserObj] = useState(null);
   const [email] = useState(localStorage.getItem('email') || '');
   const [loader, setLoader] = useState(false);
+
 
   useEffect(() => {
     (async () => {
@@ -39,6 +41,7 @@ function Card() {
       setLoader(false);
     })();
   }, [email]);
+
 
   return (
     <>
@@ -111,5 +114,6 @@ function Card() {
     </>
   );
 }
+
 
 export default Card;

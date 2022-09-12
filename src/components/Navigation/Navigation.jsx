@@ -12,6 +12,7 @@ const Navigation = () => {
   const [name] = useState(localStorage.getItem('name') || '');
   const [image] = useState(localStorage.getItem('profilePic') || '');
 
+  
   return (
     <div className="header">
       <div className="header__wrap">

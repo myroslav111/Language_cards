@@ -16,6 +16,7 @@ function Form() {
   const [success, setSuccess] = useState(false);
 
   // console.log(document.documentElement.scrollHeight);
+
   useEffect(() => {
     async function fetch() {
       try {
@@ -31,6 +32,7 @@ function Form() {
     }
     fetch();
   }, [email]);
+
 
   const handleSubmit = async e => {
     // e.preventDefault()
@@ -53,6 +55,7 @@ function Form() {
     setSuccess(false);
   };
 
+  
   return (
     <>
       {/* заголовок  */}

@@ -7,12 +7,14 @@ import StyleIcon from '@mui/icons-material/Style';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import AddIcon from '@mui/icons-material/Add';
 
+
 const typography = (
   <Typography
     id="modal-modal-description"
     sx={{ mt: 1, display: 'flex', alignItems: 'center' }}
   />
 );
+
 
 export const dataForModalAddWord = [
   {
@@ -31,6 +33,7 @@ export const dataForModalAddWord = [
     text: 'кнопка додає слово до карток',
   },
 ];
+
 
 export const dataForModalCards = [
   {

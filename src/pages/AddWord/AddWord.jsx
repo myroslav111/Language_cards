@@ -4,8 +4,10 @@ import Form from 'components/Form';
 // import AuthForm from 'components/AuthForm';
 import './AddWord.css';
 
+
 function AddWord() {
   const [name] = useState(localStorage.getItem('name') || '');
+
 
   return (
     <motion.div
@@ -35,5 +37,6 @@ function AddWord() {
     </motion.div>
   );
 }
+
 
 export default AddWord;

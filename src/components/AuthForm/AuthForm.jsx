@@ -8,6 +8,7 @@ import FooterContainer from 'components/FooterContainer';
 import ButtonGoogleAuth from 'components/ButtonGoogleAuth';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 
+
 function AuthForm() {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
 
@@ -22,6 +23,7 @@ function AuthForm() {
   const handleUpDate = () => {
     document.location.reload();
   };
+
 
   return (
     <>
@@ -57,5 +59,6 @@ function AuthForm() {
     </>
   );
 }
+
 
 export default AuthForm;
