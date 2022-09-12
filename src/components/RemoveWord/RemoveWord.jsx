@@ -2,6 +2,7 @@ import React from 'react';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import './RemoveWord.css';
 
+
 const RemoveWord = ({ onWord, onSetWord, onIndexWord }) => {
   const removeWord = e => {
     e.stopPropagation();
@@ -13,6 +14,7 @@ const RemoveWord = ({ onWord, onSetWord, onIndexWord }) => {
     }
     return;
   };
+
 
   return (
     <>
@@ -28,5 +30,6 @@ const RemoveWord = ({ onWord, onSetWord, onIndexWord }) => {
     </>
   );
 };
+
 
 export default RemoveWord;

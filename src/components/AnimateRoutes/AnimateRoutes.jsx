@@ -12,6 +12,8 @@ import ListCard from 'pages/ListCard';
 
 function AnimateRoutes() {
   const location = useLocation();
+
+  
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>

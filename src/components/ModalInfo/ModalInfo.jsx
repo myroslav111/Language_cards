@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import Box from '@mui/material/Box';
 import './ModalInfo.css';
-import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { dataForModalAddWord, dataForModalCards } from 'DiscribeForUse/DiscribeForUse'; 
 
-import {
-  dataForModalAddWord,
-  dataForModalCards,
-} from 'DiscribeForUse/DiscribeForUse';
 
 const CardMaterialUIStyle = {
   position: 'absolute',
@@ -23,6 +19,7 @@ const CardMaterialUIStyle = {
   p: 4,
 };
 
+
 const ModalInfo = ({ onOpen, onSetOpen }) => {
   const [currentPage, setCurrentPage] = useState([]);
 
@@ -35,6 +32,7 @@ const ModalInfo = ({ onOpen, onSetOpen }) => {
       handleClose();
     }
   };
+
 
   useEffect(() => {
     const pageCards = location.pathname === '/cards';
@@ -51,6 +49,7 @@ const ModalInfo = ({ onOpen, onSetOpen }) => {
         return;
     }
   }, [location.pathname]);
+
 
   return (
     <>
@@ -81,5 +80,6 @@ const ModalInfo = ({ onOpen, onSetOpen }) => {
     </>
   );
 };
+
 
 export default ModalInfo;
