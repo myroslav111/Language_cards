@@ -1,6 +1,9 @@
 add words for learning. when you finished delete them. app with google authorization. adapting for mobile.
 
-![image](https://user-images.githubusercontent.com/92175747/188284947-8b4982d9-a509-4601-8b70-5b068de52436.png)
+![image](https://user-images.githubusercontent.com/92175747/189732347-fb95662d-ec51-42f9-8ede-f5396f9b8084.png)
 
-![image](https://user-images.githubusercontent.com/92175747/188284956-3220aa18-fa65-4884-ac01-b71e4dae234c.png)
+![image](https://user-images.githubusercontent.com/92175747/189732759-6f396c96-f8bc-4259-a482-5554eedc3a39.png)
+authorizated
+![image](https://user-images.githubusercontent.com/92175747/189733053-08940be6-9f0b-4322-ba03-2fc9e69408ee.png)
+
 
