@@ -6,14 +6,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ReplyIcon from '@mui/icons-material/Reply';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import getTranslate from 'service/apiTranslate';
-
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 function Translation() {
   const [fromLanguage, setFromLanguage] = useState('en');
@@ -29,6 +26,10 @@ function Translation() {
     setTranslated('');
   };
 
+  const handleReverseLang = () => {
+    setFromLanguage(toLanguage);
+    setToLanguage(fromLanguage);
+  };
   const handleTranslate = async () => {
     if (!textForTranslate) {
       toast.warn('🦄 Додай слово для перекладу !');
@@ -56,40 +57,70 @@ function Translation() {
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '80vw',
-        // marginRight: 'auto',
-        // marginLeft: 'auto',
+        background: 'white',
         height: '80vh',
-        position: 'absolute',
-        top: '60px',
+        borderRadius: '20px 20px 0 0',
+        position: 'fixed',
+        bottom: '40px',
+        width: '100vw',
+        zIndex: '0',
       }}
     >
-      {/* width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    height: 90vh;
-    position: absolute;
-    top: 60px; */}
+      <div style={{ padding: '15px' }}>
+        {/* textarea */}
+        <textarea
+          value={textForTranslate}
+          onChange={e => setTextForTranslate(e.target.value)}
+          rows="8"
+          cols="18"
+          aria-label="maximum height"
+          placeholder="Введіть текст"
+          style={{
+            height: '150px',
+            overflow: 'hidden',
+            fontSize: '30px',
+            border: 'none',
+            outline: 'none',
+            width: '100%',
+          }}
+        ></textarea>
+      </div>
+
+      <div style={{ padding: '15px' }}>
+        {/* textarea */}
+        <textarea
+          disabled
+          value={translated}
+          rows="8"
+          cols="18"
+          aria-label="maximum height"
+          placeholder="тут буде переклад"
+          style={{
+            height: '150px',
+            overflow: 'hidden',
+            fontSize: '30px',
+            border: 'none',
+            outline: 'none',
+            width: '100%',
+          }}
+        ></textarea>
+      </div>
+
       <div
         style={{
           display: 'flex',
-          alignContent: 'center',
-          justifyContent: 'center',
-          marginTop: '10px',
-          marginBottom: '10px',
-          marginLeft: '60px',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          padding: '0 15px 0 15px',
+          marginBottom: '25px',
         }}
       >
         {/* select */}
-        <Box sx={{ marginRight: '5px' }}>
+        <Box sx={{}}>
           <FormControl>
-            <InputLabel
-              id="demo-simple-select-label"
-              sx={{ color: 'grey' }}
-            ></InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ color: 'grey' }}>
+              from
+            </InputLabel>
             <Select
               sx={{
                 border: 'none',
@@ -107,50 +138,23 @@ function Translation() {
             >
               <MenuItem value={'en'}>EN</MenuItem>
               <MenuItem value={'uk'}>UA</MenuItem>
-              <MenuItem value={'de'}>D</MenuItem>
+              <MenuItem value={'de'}>DE</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        {/* textarea */}
-        <TextareaAutosize
-          value={textForTranslate}
-          onChange={e => setTextForTranslate(e.target.value)}
-          maxRows={18}
-          aria-label="maximum height"
-          placeholder="встав сюди текст"
-          style={{
-            height: 200,
-            width: 250,
-            border: 'none',
-            borderRadius: '8px',
-            background: '',
-            padding: '5px',
-            outline: 'none',
-            boxShadow:
-              'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
-          }}
+
+        <CompareArrowsIcon
+          fontSize="large"
+          color="primary"
+          onClick={handleReverseLang}
         />
-      </div>
 
-      <KeyboardDoubleArrowDownIcon fontSize="large" color="success" />
-
-      <div
-        style={{
-          display: 'flex',
-          alignContent: 'center',
-          justifyContent: 'center',
-          marginTop: '10px',
-          marginLeft: '60px',
-        }}
-      >
-        {/* <span>en</span> */}
         {/* select */}
-        <Box sx={{ marginRight: '5px' }}>
+        <Box sx={{}}>
           <FormControl>
-            <InputLabel
-              id="demo-simple-select-label"
-              sx={{ color: 'grey' }}
-            ></InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ color: 'grey' }}>
+              to
+            </InputLabel>
             <Select
               sx={{
                 background: 'white',
@@ -166,48 +170,25 @@ function Translation() {
             >
               <MenuItem value={'en'}>EN</MenuItem>
               <MenuItem value={'uk'}>UA</MenuItem>
-              <MenuItem value={'de'}>D</MenuItem>
+              <MenuItem value={'de'}>DE</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        {/* textarea */}
-        <TextareaAutosize
-          disabled
-          maxRows={18}
-          aria-label="maximum height"
-          placeholder="тут буде переклад"
-          // defaultValue=""
-          value={translated}
-          style={{
-            height: 200,
-            width: 250,
-            border: 'none',
-            borderRadius: '8px',
-            background: '',
-            padding: '5px',
-            outline: 'none',
-            boxShadow:
-              'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
-          }}
-        />
       </div>
 
-      <Stack
-        spacing={2}
-        direction="row"
-        sx={{
-          marginTop: '10px',
-          // width: '400px',
+      <div
+        style={{
+          display: 'flex',
           justifyContent: 'space-around',
-          // padding: '5px',
-          marginLeft: '145px',
+          alignItems: 'center',
+          padding: '0 15px 0 15px',
         }}
       >
         <div
           style={{
             cursor: 'pointer',
             background: 'white',
-            width: '37px',
+            width: '87px',
             height: '37px',
             display: 'flex',
             alignItems: 'center',
@@ -224,12 +205,13 @@ function Translation() {
               navigate(location?.state?.from?.pathname ?? '/');
             }}
           />
+          назад
         </div>
         <div
           style={{
             cursor: 'pointer',
             background: 'white',
-            width: '37px',
+            width: '97px',
             height: '37px',
             display: 'flex',
             alignItems: 'center',
@@ -243,15 +225,16 @@ function Translation() {
             fontSize="large"
             color="primary"
             onClick={handleRefreshInput}
-          />
+          />{' '}
+          скинути
         </div>
-        <Button onClick={handleTranslate} variant="contained" color="success">
+        <Button onClick={handleTranslate} variant="contained" color="primary">
           Перекласти
         </Button>
-      </Stack>
+        {/* </Stack> */}
+      </div>
     </div>
   );
 }
-
 
 export default Translation;
