@@ -11,6 +11,7 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import getTranslate from 'service/apiTranslate';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 function Translation() {
   const [fromLanguage, setFromLanguage] = useState('en');
@@ -84,6 +85,7 @@ function Translation() {
             width: '100%',
           }}
         ></textarea>
+        <VolumeUpIcon />
       </div>
 
       <div style={{ padding: '15px' }}>
