@@ -59,12 +59,13 @@ function Translation() {
     <div
       style={{
         background: 'white',
-        height: '80vh',
-        borderRadius: '20px 20px 0 0',
-        position: 'fixed',
-        bottom: '40px',
-        width: '100vw',
+        // height: '80vh',
+        // borderRadius: '20px 20px 0 0',
+        // position: 'fixed',
+        // bottom: '40px',
+        // width: '100vw',
         zIndex: '0',
+        paddingBottom: '30px',
       }}
     >
       <div style={{ padding: '15px' }}>
