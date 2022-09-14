@@ -57,21 +57,8 @@ function Translation() {
   };
   return (
     <div
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
       style={{
-        // background: 'white',
-        // height: '80vh',
-        // borderRadius: '20px 20px 0 0',
-        // position: 'fixed',
-        // bottom: '40px',
-        // width: '100vw',
         zIndex: '55',
-        // paddingBottom: '30px',
-        // position: 'fixed',
-        // bottom: '30px',
-        // z-index: 55;
         position: 'fixed',
         top: '0',
         height: '100vh',
@@ -208,6 +195,9 @@ function Translation() {
         }}
       >
         <div
+          onClick={() => {
+            navigate(location?.state?.from?.pathname ?? '/');
+          }}
           style={{
             cursor: 'pointer',
             background: 'white',
@@ -221,13 +211,7 @@ function Translation() {
               'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
           }}
         >
-          <ReplyIcon
-            fontSize="large"
-            color="primary"
-            onClick={() => {
-              navigate(location?.state?.from?.pathname ?? '/');
-            }}
-          />
+          <ReplyIcon fontSize="large" color="primary" />
           назад
         </div>
         <div
