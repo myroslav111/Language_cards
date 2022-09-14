@@ -66,6 +66,8 @@ function Translation() {
         // width: '100vw',
         zIndex: '0',
         paddingBottom: '30px',
+        position: 'fixed',
+        bottom: '30px',
       }}
     >
       <div style={{ padding: '15px' }}>
@@ -184,7 +186,7 @@ function Translation() {
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
-          padding: '0 15px 0 15px',
+          padding: '0 15px 0px 15px',
         }}
       >
         <div
