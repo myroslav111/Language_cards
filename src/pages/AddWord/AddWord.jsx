@@ -4,14 +4,12 @@ import Form from 'components/Form';
 // import AuthForm from 'components/AuthForm';
 import './AddWord.css';
 
-
 function AddWord() {
   const [name] = useState(localStorage.getItem('name') || '');
 
-
   return (
     <motion.div
-      style={{ height: '80vh' }}
+      style={{ height: '100%' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -37,6 +35,5 @@ function AddWord() {
     </motion.div>
   );
 }
-
 
 export default AddWord;

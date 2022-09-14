@@ -7,11 +7,10 @@ import { useState } from 'react';
 import './App.css';
 import AuthForm from './AuthForm';
 
-
 export const App = () => {
   const [email] = useState(localStorage.getItem('email') || '');
   return (
-    <div style={{ height: '100%' }}>
+    <div style={{ height: '100vh', position: 'relative' }}>
       <Navigation />
       <AnimateRoutes />
       {email ? <FooterMobileUser /> : <AuthForm />}
