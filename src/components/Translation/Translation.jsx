@@ -57,17 +57,26 @@ function Translation() {
   };
   return (
     <div
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
       style={{
-        background: 'white',
+        // background: 'white',
         // height: '80vh',
         // borderRadius: '20px 20px 0 0',
         // position: 'fixed',
         // bottom: '40px',
         // width: '100vw',
-        zIndex: '0',
-        paddingBottom: '30px',
+        zIndex: '55',
+        // paddingBottom: '30px',
+        // position: 'fixed',
+        // bottom: '30px',
+        // z-index: 55;
         position: 'fixed',
-        bottom: '30px',
+        top: '0',
+        height: '100vh',
+        background: 'white',
+        width: '100vw',
       }}
     >
       <div style={{ padding: '15px' }}>
@@ -86,6 +95,7 @@ function Translation() {
             border: 'none',
             outline: 'none',
             width: '100%',
+            borderRadius: '8px',
           }}
         ></textarea>
         <VolumeUpIcon />
@@ -107,6 +117,8 @@ function Translation() {
             border: 'none',
             outline: 'none',
             width: '100%',
+            borderRadius: '8px',
+            background: 'white',
           }}
         ></textarea>
       </div>
@@ -123,7 +135,10 @@ function Translation() {
         {/* select */}
         <Box sx={{}}>
           <FormControl>
-            <InputLabel id="demo-simple-select-label" sx={{ color: 'grey' }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              sx={{ color: '#1976d2', fontStyle: 'italic' }}
+            >
               from
             </InputLabel>
             <Select
@@ -157,7 +172,10 @@ function Translation() {
         {/* select */}
         <Box sx={{}}>
           <FormControl>
-            <InputLabel id="demo-simple-select-label" sx={{ color: 'grey' }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              sx={{ color: '#1976d2', fontStyle: 'italic' }}
+            >
               to
             </InputLabel>
             <Select
