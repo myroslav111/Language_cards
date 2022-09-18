@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,9 +8,11 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import ReplyIcon from '@mui/icons-material/Reply';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import getTranslate from 'service/apiTranslate';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import getTranslate from 'service/apiTranslate';
+import { toast } from 'react-toastify';
+import './Translation.css';
 
 function Translation() {
   const [fromLanguage, setFromLanguage] = useState('en');
@@ -31,6 +32,7 @@ function Translation() {
     setFromLanguage(toLanguage);
     setToLanguage(fromLanguage);
   };
+
   const handleTranslate = async () => {
     if (!textForTranslate) {
       toast.warn('🦄 Додай слово для перекладу !');
@@ -55,35 +57,19 @@ function Translation() {
   const handleChangeTo = event => {
     setToLanguage(event.target.value);
   };
+
   return (
-    <div
-      style={{
-        zIndex: '55',
-        position: 'fixed',
-        top: '0',
-        height: '100vh',
-        background: 'white',
-        width: '100vw',
-      }}
-    >
+    <div className="container-transltor">
       <div style={{ padding: '15px' }}>
         {/* textarea */}
         <textarea
+          className="textarea-from"
           value={textForTranslate}
           onChange={e => setTextForTranslate(e.target.value)}
           rows="8"
           cols="18"
           aria-label="maximum height"
           placeholder="Введіть текст"
-          style={{
-            height: '150px',
-            overflow: 'hidden',
-            fontSize: '30px',
-            border: 'none',
-            outline: 'none',
-            width: '100%',
-            borderRadius: '8px',
-          }}
         ></textarea>
         <VolumeUpIcon />
       </div>
@@ -91,22 +77,13 @@ function Translation() {
       <div style={{ padding: '15px' }}>
         {/* textarea */}
         <textarea
+          className="textarea-from"
           disabled
           value={translated}
           rows="8"
           cols="18"
           aria-label="maximum height"
           placeholder="тут буде переклад"
-          style={{
-            height: '150px',
-            overflow: 'hidden',
-            fontSize: '30px',
-            border: 'none',
-            outline: 'none',
-            width: '100%',
-            borderRadius: '8px',
-            background: 'white',
-          }}
         ></textarea>
       </div>
 
@@ -186,48 +163,17 @@ function Translation() {
         </Box>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          padding: '0 15px 0px 15px',
-        }}
-      >
+      <div className="wraper-button-down">
         <div
+          className="button-back"
           onClick={() => {
             navigate(location?.state?.from?.pathname ?? '/');
-          }}
-          style={{
-            cursor: 'pointer',
-            background: 'white',
-            width: '87px',
-            height: '37px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '8px',
-            boxShadow:
-              'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
           }}
         >
           <ReplyIcon fontSize="large" color="primary" />
           назад
         </div>
-        <div
-          style={{
-            cursor: 'pointer',
-            background: 'white',
-            width: '97px',
-            height: '37px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '8px',
-            boxShadow:
-              'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
-          }}
-        >
+        <div className="button-reset">
           <RefreshIcon
             fontSize="large"
             color="primary"
@@ -238,7 +184,6 @@ function Translation() {
         <Button onClick={handleTranslate} variant="contained" color="primary">
           Перекласти
         </Button>
-        {/* </Stack> */}
       </div>
     </div>
   );

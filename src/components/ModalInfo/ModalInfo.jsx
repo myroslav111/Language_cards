@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import Box from '@mui/material/Box';
-import './ModalInfo.css';
+import {
+  dataForModalAddWord,
+  dataForModalCards,
+} from 'DiscribeForUse/DiscribeForUse';
 import { nanoid } from 'nanoid';
-import { dataForModalAddWord, dataForModalCards } from 'DiscribeForUse/DiscribeForUse'; 
-
+import './ModalInfo.css';
 
 const CardMaterialUIStyle = {
   position: 'absolute',
@@ -19,22 +21,21 @@ const CardMaterialUIStyle = {
   p: 4,
 };
 
-
 const ModalInfo = ({ onOpen, onSetOpen }) => {
   const [currentPage, setCurrentPage] = useState([]);
 
   const location = useLocation();
 
-  const handleClose = () => onSetOpen(false);
+  const handleCloseModal = () => onSetOpen(false);
 
-  const onClickBackdrop = e => {
+  const onClickBackdropOfModal = e => {
     if (e.target === e.currentTarget) {
-      handleClose();
+      handleCloseModal();
     }
   };
 
-
   useEffect(() => {
+    /** defining which is the current page now */
     const pageCards = location.pathname === '/cards';
     const pageHome = location.pathname === '/';
 
@@ -50,27 +51,19 @@ const ModalInfo = ({ onOpen, onSetOpen }) => {
     }
   }, [location.pathname]);
 
-
   return (
     <>
       {/* animation */}
       <CSSTransition in={onOpen} unmountOnExit classNames="fades" timeout={250}>
         {/* modal */}
-        <div className="overlay" onClick={onClickBackdrop}>
+        <div className="overlay" onClick={onClickBackdropOfModal}>
           <Box sx={CardMaterialUIStyle}>
             <ul>
-              {currentPage.map(el => (
-                <li
-                  key={nanoid()}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    margin: '4px',
-                  }}
-                >
-                  {el.wraper}
-                  {el.icon}
-                  <span className="modal-text">{el.text}</span>
+              {currentPage.map(({ wraper, icon, text }) => (
+                <li className="box-of-modal" key={nanoid()}>
+                  {wraper}
+                  {icon}
+                  <span className="modal-text">{text}</span>
                 </li>
               ))}
             </ul>
@@ -80,6 +73,5 @@ const ModalInfo = ({ onOpen, onSetOpen }) => {
     </>
   );
 };
-
 
 export default ModalInfo;

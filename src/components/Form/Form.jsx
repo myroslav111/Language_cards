@@ -1,61 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import api from 'service/api';
-import apiSecond from 'service/apiForRegistered';
+import apiForUnregisteredUsers from 'service/api';
+import apiForRegisteredUsers from 'service/apiForRegistered';
+import { toast } from 'react-toastify';
 import { nanoid } from 'nanoid';
 import './Form.css';
 
-
 function Form() {
-  const [en, setEn] = useState('');
-  const [ru, setRu] = useState('');
+  const [en, setEnWord] = useState('');
+  const [ru, setRuWord] = useState('');
   const [email] = useState(localStorage.getItem('email') || '');
   const [objUser, setObjUser] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // console.log(document.documentElement.scrollHeight);
 
+  /** we need get registered users in order to rewrite his data in case of adding a new word*/
   useEffect(() => {
     async function fetch() {
       try {
-        const data = await apiSecond.getAllWordsAuth();
-        const id = data.find(e => e.email === email);
-        // setIdUser(id);
-        setObjUser(id);
+        const dataRegisteredUsers =
+          await apiForRegisteredUsers.getAllWordsAuth();
+        const user = dataRegisteredUsers.find(e => e.email === email);
+        setObjUser(user);
       } catch (error) {
         console.log(error);
-      } finally {
-        // document.location.reload();
       }
     }
     fetch();
   }, [email]);
 
-
-  const handleSubmit = async e => {
-    // e.preventDefault()
+  /** write a new word in bd */
+  const handleSubmitNewWord = async () => {
     if (!en || !ru) return toast.warn('🦄 Ви повинні додати слово.');
-    setSuccess(true);
+    setIsSuccess(true);
     let idCard = nanoid();
     if (!email) {
-      api.addWord({ en, ru });
+      apiForUnregisteredUsers.addWord({ en, ru });
     }
     if (email) {
       objUser.data?.push({ en, ru, idCard });
-      await apiSecond.addWordAuth(objUser.id, {
+      await apiForRegisteredUsers.addWordAuth(objUser.id, {
         ...objUser,
       });
     }
-    // console.log(objUser);
     toast.success('🚀 Ми додали слово до ваших карток!');
-    setEn('');
-    setRu('');
-    setSuccess(false);
+    setEnWord('');
+    setRuWord('');
+    setIsSuccess(false);
   };
 
-  
   return (
     <>
       {/* заголовок  */}
@@ -64,10 +59,10 @@ function Form() {
       <label>
         EN
         <input
-          // type="text"
+          type="text"
           name="en"
           className="input"
-          onChange={e => setEn(e.target.value)}
+          onChange={e => setEnWord(e.target.value)}
           value={en}
         />
       </label>
@@ -79,13 +74,17 @@ function Form() {
           type="text"
           name="ru"
           className="input"
-          onChange={e => setRu(e.target.value)}
+          onChange={e => setRuWord(e.target.value)}
           value={ru}
         />
       </label>
 
-      <button onClick={handleSubmit} type="submit" className="button__add">
-        {!success ? (
+      <button
+        onClick={handleSubmitNewWord}
+        type="submit"
+        className="button__add"
+      >
+        {!isSuccess ? (
           <AddCircleOutlineIcon />
         ) : (
           <ThumbUpAltIcon sx={{ color: 'green' }} />
@@ -94,6 +93,5 @@ function Form() {
     </>
   );
 }
-
 
 export default Form;

@@ -4,15 +4,15 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import api from 'service/api';
-import apiSecond from 'service/apiForRegistered';
-import './Card.css';
 import SoundButton from 'components/SoundButton/SoundButton';
 import DeleteWord from 'components/DeleteWord';
 import RemoveWord from 'components/RemoveWord';
+import apiForRegisteredUsers from 'service/apiForRegistered';
+import apiForUnregisteredUsers from 'service/api';
+import './Card.css';
 
 function Card() {
-  const [state, setState] = useState(true);
+  const [stateForSwitchWord, setStateForSwitchWord] = useState(true);
   const [indexWord, setIndexWord] = useState(0);
   const [word, setWord] = useState([]);
   const [userObj, setUserObj] = useState(null);
@@ -23,15 +23,19 @@ function Card() {
     (async () => {
       setLoader(true);
       try {
+        /** if email true it means user authorised and we write his words to state unless write common words*/
         if (!email) {
-          const data = await api.getAllWords();
-          setWord(data);
+          const commonWordsForUnregisteredUsers =
+            await apiForUnregisteredUsers.getAllWords();
+          setWord(commonWordsForUnregisteredUsers);
         }
         if (email) {
-          const dataRegistered = await apiSecond.getAllWordsAuth();
-          const user = dataRegistered.filter(user => user.email === email);
-          setUserObj(user[0]);
-          setWord(user[0].data);
+          /** all users */
+          const usersData = await apiForRegisteredUsers.getAllWordsAuth();
+          /** finde user data */
+          const [user] = usersData.filter(user => user.email === email);
+          setUserObj(user);
+          setWord(user.data);
         }
       } catch (error) {
         console.log(error);
@@ -42,24 +46,26 @@ function Card() {
 
   return (
     <>
-      <div className="q">
+      <div className="wraper-card">
         {/* animation from library */}
         <SwitchTransition>
           <CSSTransition
-            key={state ? 'Goodbye, world!' : 'Hello, world!'}
+            key={stateForSwitchWord}
             addEndListener={(node, done) =>
               node.addEventListener('transitionend', done, false)
             }
             classNames="fade"
           >
             {/* black card */}
-            <div className="card" onClick={e => setState(state => !state)}>
+            <div
+              className="card"
+              onClick={e => setStateForSwitchWord(state => !state)}
+            >
               {loader && (
                 <Box sx={{ display: 'flex' }}>
                   <CircularProgress sx={{ color: '#ff9800' }} />
                 </Box>
               )}
-
               {/* кнопка поставити в чергу картку (з перевіркою) */}
               <RemoveWord
                 onWord={word}
@@ -78,7 +84,9 @@ function Card() {
 
               {word.length > 0 && (
                 <span className="card__text">
-                  {state ? word[indexWord]?.en : word[indexWord]?.ru}
+                  {stateForSwitchWord
+                    ? word[indexWord]?.en
+                    : word[indexWord]?.ru}
                 </span>
               )}
             </div>
@@ -106,7 +114,7 @@ function Card() {
         {/* words count */}
         <div className="description__wrap">
           <span>
-            {word.indexOf(word[indexWord]) + 1} - from -{word.length}
+            {word.indexOf(word[indexWord]) + 1} - from - {word.length}
           </span>
         </div>
       </div>

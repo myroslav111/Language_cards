@@ -1,36 +1,40 @@
 import React from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import api from 'service/api';
-import apiSecond from 'service/apiForRegistered';
+import apiForRegisteredUsers from 'service/apiForRegistered';
+import apiForUnregisteredUsers from 'service/api';
 import './DeleteWord.css';
-
 
 const DeleteWord = ({ onWord, onSetWord, onIndexWord, onUserObj }) => {
   const deleteWord = async e => {
     e.stopPropagation();
+    /** this action for unregistered users */
     if (onWord[onIndexWord]?.id) {
       try {
-        api.deleteWord(onWord[onIndexWord]?.id);
-        onSetWord(onWord.filter(w => w.id !== onWord[+onIndexWord].id));
+        apiForUnregisteredUsers.deleteWord(onWord[onIndexWord]?.id);
+        onSetWord(onWord.filter(word => word.id !== onWord[+onIndexWord].id));
       } catch (error) {
         console.log(error);
       }
     }
+    /** this action for registered users */
     if (onWord[onIndexWord]?.idCard) {
+      /** rewrite user obj */
       try {
         onUserObj.data = [
           ...onUserObj.data.filter(
-            w => w.idCard !== onWord[+onIndexWord].idCard
+            word => word.idCard !== onWord[+onIndexWord].idCard
           ),
         ];
-        onSetWord(onWord.filter(w => w.idCard !== onWord[+onIndexWord].idCard));
-        apiSecond.addWordAuth(onUserObj.id, onUserObj);
+        onSetWord(
+          onWord.filter(word => word.idCard !== onWord[+onIndexWord].idCard)
+        );
+        console.log(onUserObj);
+        apiForRegisteredUsers.addWordAuth(onUserObj.id, onUserObj);
       } catch (error) {
         console.log(error);
       }
     }
   };
-
 
   return (
     <>
@@ -46,6 +50,5 @@ const DeleteWord = ({ onWord, onSetWord, onIndexWord, onUserObj }) => {
     </>
   );
 };
-
 
 export default DeleteWord;

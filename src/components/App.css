@@ -1,11 +1,14 @@
+.main-wraper {
+  height: 100vh;
+  position: relative;
+}
+
 .container {
   position: relative;
 }
 
 .page {
   position: absolute;
-  /* left: 15px; */
-  /* right: 15px; */
 }
 
 .page-enter {

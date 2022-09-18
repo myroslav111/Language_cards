@@ -27,11 +27,10 @@ async function deleteWord(id) {
   return response;
 }
 
-const api = {
+const apiForUnregisteredUsers = {
   getAllWords: getAllWords,
   addWord: addWord,
   deleteWord: deleteWord,
 };
 
-
-export default api;
+export default apiForUnregisteredUsers;

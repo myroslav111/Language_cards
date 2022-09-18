@@ -2,19 +2,19 @@ import React from 'react';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import './RemoveWord.css';
 
-
 const RemoveWord = ({ onWord, onSetWord, onIndexWord }) => {
   const removeWord = e => {
     e.stopPropagation();
     if (onWord[onIndexWord]?.id) {
-      onSetWord(onWord.filter(w => w.id !== onWord[+onIndexWord].id));
+      onSetWord(onWord.filter(word => word.id !== onWord[+onIndexWord].id));
     }
     if (onWord[onIndexWord]?.idCard) {
-      onSetWord(onWord.filter(w => w.idCard !== onWord[+onIndexWord].idCard));
+      onSetWord(
+        onWord.filter(word => word.idCard !== onWord[+onIndexWord].idCard)
+      );
     }
     return;
   };
-
 
   return (
     <>
@@ -30,6 +30,5 @@ const RemoveWord = ({ onWord, onSetWord, onIndexWord }) => {
     </>
   );
 };
-
 
 export default RemoveWord;

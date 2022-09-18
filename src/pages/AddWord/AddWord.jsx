@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Form from 'components/Form';
-// import AuthForm from 'components/AuthForm';
 import './AddWord.css';
 
 function AddWord() {
@@ -31,7 +30,6 @@ function AddWord() {
           </div>
         </>
       )}
-      {/* {!name && <AuthForm />} */}
     </motion.div>
   );
 }
