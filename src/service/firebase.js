@@ -4,18 +4,18 @@ import { initializeApp } from 'firebase/app';
 
 // firebase data
 export const firebaseConfig = {
-  // apiKey: 'AIzaSyAZWL6jBhtQG0JPHEylLfigAUp0NuMMCN0',
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: 'AIzaSyAZWL6jBhtQG0JPHEylLfigAUp0NuMMCN0',
+  //   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: 'lang-cards-1e9e8.firebaseapp.com',
   // authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  // projectId: 'lang-cards-1e9e8',
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  // storageBucket: 'lang-cards-1e9e8.appspot.com',
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  // messagingSenderId: '869660962106',
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGIN_SENDER_ID,
-  // appId: '1:869660962106:web:2cdc123c173b74c3f7f403',
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  projectId: 'lang-cards-1e9e8',
+  //   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: 'lang-cards-1e9e8.appspot.com',
+  //   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: '869660962106',
+  //   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGIN_SENDER_ID,
+  appId: '1:869660962106:web:2cdc123c173b74c3f7f403',
+  //   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 // initialization of firebase
 const app = initializeApp(firebaseConfig);
