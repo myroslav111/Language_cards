@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import GTranslateIcon from '@mui/icons-material/GTranslate';
 import { NavLink } from 'react-router-dom';
-import { signInWithGoogle } from 'index';
-import './AuthForm.css';
+import { signInWithGoogle } from '../../service/firebase';
+import GTranslateIcon from '@mui/icons-material/GTranslate';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import ModalInfo from 'components/ModalInfo';
 import FooterContainer from 'components/FooterContainer';
 import ButtonGoogleAuth from 'components/ButtonGoogleAuth';
-import HelpCenterIcon from '@mui/icons-material/HelpCenter';
-
+import './AuthForm.css';
 
 function AuthForm() {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
+  const [isOpen, setIsOpen] = useState(false);
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  /** isOpen modal for transition to user acount*/
+  const handleOpenModal = () => setIsOpen(true);
 
+  /** get request to avtorisation by google acount*/
   const handleSubmit = () => {
     setEmail('setEmail');
+    /** get request to avtorisation by google acount */
     signInWithGoogle();
   };
 
-  const handleUpDate = () => {
+  /** it's order to update user page  */
+  const handleUpDateUserInterface = () => {
     document.location.reload();
   };
-
 
   return (
     <>
@@ -32,13 +34,11 @@ function AuthForm() {
         <HelpCenterIcon
           color="secondary"
           fontSize="large"
-          onClick={handleOpen}
+          onClick={handleOpenModal}
         />
         {/* icon translation link to page*/}
         <NavLink to="/translate">
-          {/* <div className="translate"> */}
           <GTranslateIcon fontSize="large" color="primary" />
-          {/* </div> */}
         </NavLink>
         {!email ? (
           <ButtonGoogleAuth
@@ -48,17 +48,16 @@ function AuthForm() {
         ) : (
           <div className="screensaver">
             <ButtonGoogleAuth
-              handleSubmit={handleUpDate}
+              handleSubmit={handleUpDateUserInterface}
               text={'Go finished'}
             />
           </div>
         )}
       </FooterContainer>{' '}
       {/* Modal */}
-      <ModalInfo onOpen={open} onSetOpen={setOpen} />
+      <ModalInfo onOpen={isOpen} onSetOpen={setIsOpen} />
     </>
   );
 }
-
 
 export default AuthForm;

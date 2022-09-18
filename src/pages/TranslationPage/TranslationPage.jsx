@@ -1,12 +1,11 @@
-import Translation from 'components/Translation';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Translation from 'components/Translation';
 
 function TranslationPage() {
   return (
     <>
       <motion.div
-        style={{}}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

@@ -13,41 +13,40 @@ import FooterContainer from 'components/FooterContainer/FooterContainer';
 import './FooterMobileUser.css';
 import '../AuthForm/AuthForm.css';
 
-
 const FooterMobileUser = () => {
   const [email] = useState(localStorage.getItem('email') || '');
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleOpenModal = () => setIsOpen(true);
 
+  /**popper functionality */
   const handleClick = event => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
   const openPoper = Boolean(anchorEl);
+
   const id = openPoper ? 'simple-popper' : undefined;
 
-  const handleExit = () => {
+  /** because there is no user in localStorage after rewrite we are changing functionality in other components */
+  const handleExitFromAccount = () => {
     localStorage.setItem('name', '');
     localStorage.setItem('email', '');
     localStorage.setItem('profilePic', '');
-
+    /** reload page */
     document.location.reload();
   };
-
 
   return (
     <>
       {email && (
-        // <div className="footer__wrap">
-        //   <div className="footer">
         <FooterContainer>
           <HelpCenterIcon
             className="footer__icon"
             color="secondary"
             fontSize="large"
-            onClick={handleOpen}
+            onClick={handleOpenModal}
           />
           {/* icon translation link to page*/}
           <NavLink to="/translate">
@@ -77,16 +76,13 @@ const FooterMobileUser = () => {
             className="footer__icon"
             sx={{ color: red[500] }}
             fontSize="large"
-            onClick={handleExit}
+            onClick={handleExitFromAccount}
           />
         </FooterContainer>
-        //   </div>
-        // </div>
       )}
-      <ModalInfo onOpen={open} onSetOpen={setOpen} />
+      <ModalInfo onOpen={isOpen} onSetOpen={setIsOpen} />
     </>
   );
 };
-
 
 export default FooterMobileUser;

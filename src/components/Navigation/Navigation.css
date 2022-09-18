@@ -1,12 +1,9 @@
 .header {
-  /* position: fixed; */
   height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
   border-bottom: 1px solid #e7ebf0;
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px,
     rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;

@@ -7,7 +7,7 @@ async function getUserAuth() {
   const { data } = await secondApi.get(
     'https://63126265b466aa9b03896a0c.mockapi.io/user-lang'
   );
-    // console.log("getUserAuth", data );
+  // console.log("getUserAuth", data );
   return data;
 }
 
@@ -16,7 +16,7 @@ async function getAllWordsAuth() {
   const { data } = await secondApi.get(
     'https://63126265b466aa9b03896a0c.mockapi.io/user-lang'
   );
-    // console.log("getAllWordsAuth", data);
+  // console.log("getAllWordsAuth", data);
   return data;
 }
 
@@ -26,7 +26,7 @@ async function addWordAuth(id, word) {
     `https://63126265b466aa9b03896a0c.mockapi.io/user-lang/${id}`,
     word
   );
-    // console.log("addWordAuth", data);
+  // console.log("addWordAuth", data);
   return data;
 }
 
@@ -48,7 +48,7 @@ async function deleteWordAuth(id) {
   return response;
 }
 
-const apiSecond = {
+const apiForRegisteredUsers = {
   getUserAuth: getUserAuth,
   getAllWordsAuth: getAllWordsAuth,
   addWordAuth: addWordAuth,
@@ -56,5 +56,4 @@ const apiSecond = {
   addUser: addUser,
 };
 
-
-export default apiSecond;
+export default apiForRegisteredUsers;
