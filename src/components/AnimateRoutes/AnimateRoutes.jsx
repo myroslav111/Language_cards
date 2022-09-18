@@ -9,11 +9,8 @@ import ListCard from 'pages/ListCard';
 
 // import { AnimatePresence } from 'framer-motion/dist/framer-motion';
 
-
 function AnimateRoutes() {
   const location = useLocation();
-
-  
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
@@ -24,6 +21,5 @@ function AnimateRoutes() {
     </AnimatePresence>
   );
 }
-
 
 export default AnimateRoutes;
