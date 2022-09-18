@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 function FooterContainer(props) {
-  
   return (
     <>
       <div className="footer__wrap">
@@ -11,6 +9,5 @@ function FooterContainer(props) {
     </>
   );
 }
-
 
 export default FooterContainer;
