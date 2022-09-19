@@ -42,42 +42,43 @@ const FooterMobileUser = () => {
     <>
       {email && (
         <FooterContainer>
-          <HelpCenterIcon
-            className="footer__icon"
-            color="secondary"
-            fontSize="large"
-            onClick={handleOpenModal}
-          />
+          <div className="footer__icon">
+            <HelpCenterIcon
+              color="secondary"
+              fontSize="large"
+              onClick={handleOpenModal}
+            />
+          </div>
           {/* icon translation link to page*/}
-          <NavLink to="/translate">
-            <GTranslateIcon fontSize="large" color="primary" />
-          </NavLink>
-
-          <HomeIcon
-            className="footer__icon"
-            color="primary"
-            fontSize="large"
-            onClick={handleClick}
-          />
+          <div className="footer__icon">
+            <NavLink to="/translate">
+              <GTranslateIcon fontSize="large" color="primary" />
+            </NavLink>
+            {/* sx={{ fontSize: 30 }} */}
+          </div>
+          <div className="footer__icon">
+            <HomeIcon
+              // className="footer__icon"
+              color="primary"
+              fontSize="large"
+              onClick={handleClick}
+            />
+          </div>
           <Popper id={id} open={openPoper} anchorEl={anchorEl}>
             <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
               поки-що в розробці
             </Box>
           </Popper>
-
-          <TopicIcon
-            className="footer__icon"
-            color="success"
-            fontSize="large"
-            onClick={handleClick}
-          />
-
-          <ExitToAppIcon
-            className="footer__icon"
-            sx={{ color: red[500] }}
-            fontSize="large"
-            onClick={handleExitFromAccount}
-          />
+          <div className="footer__icon">
+            <TopicIcon color="success" fontSize="large" onClick={handleClick} />
+          </div>
+          <div className="footer__icon">
+            <ExitToAppIcon
+              sx={{ color: red[500] }}
+              fontSize="large"
+              onClick={handleExitFromAccount}
+            />
+          </div>
         </FooterContainer>
       )}
       <ModalInfo onOpen={isOpen} onSetOpen={setIsOpen} />
