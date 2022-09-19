@@ -14,7 +14,7 @@ export const App = () => {
       <Navigation />
       <AnimateRoutes />
       {email ? <FooterMobileUser /> : <AuthForm />}
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={1500} />
     </div>
   );
 };

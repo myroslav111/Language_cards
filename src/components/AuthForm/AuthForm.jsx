@@ -31,14 +31,18 @@ function AuthForm() {
     <>
       <FooterContainer>
         {/* иконка инфо */}
-        <HelpCenterIcon
-          color="secondary"
-          fontSize="large"
-          onClick={handleOpenModal}
-        />
+        <div className="footer__icon">
+          <HelpCenterIcon
+            color="secondary"
+            fontSize="large"
+            onClick={handleOpenModal}
+          />
+        </div>
         {/* icon translation link to page*/}
         <NavLink to="/translate">
-          <GTranslateIcon fontSize="large" color="primary" />
+          <div className="footer__icon">
+            <GTranslateIcon fontSize="large" color="primary" />
+          </div>
         </NavLink>
         {!email ? (
           <ButtonGoogleAuth

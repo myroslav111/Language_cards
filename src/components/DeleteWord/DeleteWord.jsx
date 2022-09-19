@@ -28,7 +28,6 @@ const DeleteWord = ({ onWord, onSetWord, onIndexWord, onUserObj }) => {
         onSetWord(
           onWord.filter(word => word.idCard !== onWord[+onIndexWord].idCard)
         );
-        console.log(onUserObj);
         apiForRegisteredUsers.addWordAuth(onUserObj.id, onUserObj);
       } catch (error) {
         console.log(error);

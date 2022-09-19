@@ -35,6 +35,7 @@ function Form() {
   const handleSubmitNewWord = async () => {
     if (!en || !ru) return toast.warn('🦄 Ви повинні додати слово.');
     setIsSuccess(true);
+
     let idCard = nanoid();
     if (!email) {
       apiForUnregisteredUsers.addWord({ en, ru });
@@ -80,9 +81,10 @@ function Form() {
       </label>
 
       <button
+        disabled={isSuccess}
         onClick={handleSubmitNewWord}
         type="submit"
-        className="button__add"
+        className="paginator__btn btn"
       >
         {!isSuccess ? (
           <AddCircleOutlineIcon />

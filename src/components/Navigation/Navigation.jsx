@@ -7,12 +7,10 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import 'animate.css';
 import './Navigation.css';
 
-
 const Navigation = () => {
   const [name] = useState(localStorage.getItem('name') || '');
   const [image] = useState(localStorage.getItem('profilePic') || '');
 
-  
   return (
     <div className="header">
       <div className="header__wrap">
@@ -29,7 +27,9 @@ const Navigation = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar alt={name} src={image} />
+          <div className="icon-link">
+            <Avatar alt={name} src={image} />
+          </div>
           <span className="name">{name}</span>
         </Stack>
         <NavLink to="/cards" className="link ">
@@ -38,7 +38,6 @@ const Navigation = () => {
       </div>
     </div>
   );
-}
-
+};
 
 export default Navigation;
