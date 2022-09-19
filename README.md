@@ -1,10 +1,10 @@
 add words for learning. when you finished delete them. app with google authorization. adapting for mobile.
 authorizated
-![image](https://user-images.githubusercontent.com/92175747/189743242-0ef4d86a-ef33-47ad-a57e-f3d826436723.png)
+![myroslav111 github io_Language_cards_(Moto G4)](https://user-images.githubusercontent.com/92175747/191112476-91b9d308-4f8e-46a0-ad37-e3251947b6bb.png)
 
-![image](https://user-images.githubusercontent.com/92175747/189732759-6f396c96-f8bc-4259-a482-5554eedc3a39.png)
+![myroslav111 github io_Language_cards_(Moto G4) (1)](https://user-images.githubusercontent.com/92175747/191112602-2ee4183b-cf37-49d5-83e5-3df8ede102a9.png)
 
-![image](https://user-images.githubusercontent.com/92175747/189737685-41f7086e-3ea0-445c-9892-74ad99aa9cba.png)
+![myroslav111 github io_Language_cards_(Moto G4) (2)](https://user-images.githubusercontent.com/92175747/191112671-2392f096-2f9e-4edd-a25b-058996a07c58.png)
 
 
 
