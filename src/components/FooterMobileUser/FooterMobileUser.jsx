@@ -5,13 +5,14 @@ import { Box } from '@mui/material';
 import { red } from '@mui/material/colors';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import HomeIcon from '@mui/icons-material/Home';
-import TopicIcon from '@mui/icons-material/Topic';
+// import TopicIcon from '@mui/icons-material/Topic';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import GTranslateIcon from '@mui/icons-material/GTranslate';
 import ModalInfo from 'components/ModalInfo';
 import FooterContainer from 'components/FooterContainer/FooterContainer';
 import './FooterMobileUser.css';
 import '../AuthForm/AuthForm.css';
+import SelectLanguage from 'components/SelectLanguage';
 
 const FooterMobileUser = () => {
   const [email] = useState(localStorage.getItem('email') || '');
@@ -34,6 +35,7 @@ const FooterMobileUser = () => {
     localStorage.setItem('name', '');
     localStorage.setItem('email', '');
     localStorage.setItem('profilePic', '');
+    localStorage.setItem('language', '');
     /** reload page */
     document.location.reload();
   };
@@ -70,7 +72,8 @@ const FooterMobileUser = () => {
             </Box>
           </Popper>
           <div className="footer__icon">
-            <TopicIcon color="success" fontSize="large" onClick={handleClick} />
+            {/* <TopicIcon color="success" fontSize="large" onClick={handleClick} /> */}
+            <SelectLanguage />
           </div>
           <div className="footer__icon">
             <ExitToAppIcon

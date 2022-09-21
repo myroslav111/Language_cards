@@ -2,8 +2,7 @@ import React from 'react';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './SoundButton.css';
 
-
-const SoundButton = ({ onWord, onIndexWord }) => {
+const SoundButton = ({ onWord, onIndexWord, currentLanguage }) => {
   // логіка кнопки озвучування
   const handleClickSound = e => {
     e.preventDefault();
@@ -17,14 +16,18 @@ const SoundButton = ({ onWord, onIndexWord }) => {
 
     //  читання тексту
     const utterance = new SpeechSynthesisUtterance(soundWordIndex[0].en);
-    utterance.lang = 'en-US';
+    if (currentLanguage === 'en') {
+      utterance.lang = 'en-US';
+    } else {
+      utterance.lang = 'de';
+    }
+
     synth.speak(utterance);
   };
 
   const handleClickButton = e => {
     e.stopPropagation();
   };
-
 
   return (
     <>
@@ -38,6 +41,5 @@ const SoundButton = ({ onWord, onIndexWord }) => {
     </>
   );
 };
-
 
 export default SoundButton;

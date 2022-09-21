@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import apiForUnregisteredUsers from 'service/api';
 import apiForRegisteredUsers from 'service/apiForRegistered';
+import { Context } from 'components/App';
 import { toast } from 'react-toastify';
 import { nanoid } from 'nanoid';
 import './Form.css';
 
 function Form() {
+  const [currentLanguage, setCurrentLanguage] = useState(() =>
+    localStorage.getItem('language')
+  );
   const [en, setEnWord] = useState('');
   const [ru, setRuWord] = useState('');
   const [email] = useState(localStorage.getItem('email') || '');
   const [objUser, setObjUser] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { lang } = useContext(Context);
 
   // console.log(document.documentElement.scrollHeight);
 
@@ -24,28 +29,38 @@ function Form() {
           await apiForRegisteredUsers.getAllWordsAuth();
         const user = dataRegisteredUsers.find(e => e.email === email);
         setObjUser(user);
+        setCurrentLanguage(lang);
       } catch (error) {
         console.log(error);
       }
     }
     fetch();
-  }, [email]);
+  }, [email, lang]);
 
   /** write a new word in bd */
   const handleSubmitNewWord = async () => {
     if (!en || !ru) return toast.warn('🦄 Ви повинні додати слово.');
     setIsSuccess(true);
-
     let idCard = nanoid();
+    /** if our user unregistered */
     if (!email) {
       apiForUnregisteredUsers.addWord({ en, ru });
     }
-    if (email) {
+    /** if current page is england and user is registered*/
+    if (email && currentLanguage === 'en') {
       objUser.data?.push({ en, ru, idCard });
       await apiForRegisteredUsers.addWordAuth(objUser.id, {
         ...objUser,
       });
     }
+    /** if current page is deuchland and user is registered*/
+    if (email && currentLanguage === 'de') {
+      objUser.dataDe?.push({ en, ru, idCard });
+      await apiForRegisteredUsers.addWordAuth(objUser.id, {
+        ...objUser,
+      });
+    }
+
     toast.success('🚀 Ми додали слово до ваших карток!');
     setEnWord('');
     setRuWord('');
@@ -58,7 +73,7 @@ function Form() {
       <h1>Додай слово для вивчення</h1>
       {/* инпут 1 */}
       <label>
-        EN
+        {lang === 'en' || lang === '' ? 'EN' : 'DE'}
         <input
           type="text"
           name="en"
