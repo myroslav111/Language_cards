@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -7,11 +7,16 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import SoundButton from 'components/SoundButton/SoundButton';
 import DeleteWord from 'components/DeleteWord';
 import RemoveWord from 'components/RemoveWord';
+import { Context } from 'components/App';
 import apiForRegisteredUsers from 'service/apiForRegistered';
 import apiForUnregisteredUsers from 'service/api';
 import './Card.css';
 
 function Card() {
+  const { lang } = useContext(Context);
+  const [currentLanguage, setCurrentLanguage] = useState(() =>
+    localStorage.getItem('language')
+  );
   const [stateForSwitchWord, setStateForSwitchWord] = useState(true);
   const [indexWord, setIndexWord] = useState(0);
   const [word, setWord] = useState([]);
@@ -20,8 +25,14 @@ function Card() {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
+    if (localStorage.getItem('language')) {
+      setCurrentLanguage(localStorage.getItem('language'));
+    } else {
+      setCurrentLanguage(lang);
+    }
     (async () => {
       setLoader(true);
+
       try {
         /** if email true it means user authorised and we write his words to state unless write common words*/
         if (!email) {
@@ -29,7 +40,8 @@ function Card() {
             await apiForUnregisteredUsers.getAllWords();
           setWord(commonWordsForUnregisteredUsers);
         }
-        if (email) {
+
+        if (email && currentLanguage === 'en') {
           /** all users */
           const usersData = await apiForRegisteredUsers.getAllWordsAuth();
           /** finde user data */
@@ -37,12 +49,21 @@ function Card() {
           setUserObj(user);
           setWord(user.data);
         }
+
+        if (email && currentLanguage === 'de') {
+          /** all users */
+          const usersData = await apiForRegisteredUsers.getAllWordsAuth();
+          /** finde user data */
+          const [user] = usersData.filter(user => user.email === email);
+          setUserObj(user);
+          setWord(user.dataDe);
+        }
       } catch (error) {
         console.log(error);
       }
       setLoader(false);
     })();
-  }, [email]);
+  }, [email, lang, currentLanguage]);
 
   return (
     <>
@@ -78,9 +99,14 @@ function Card() {
                 onSetWord={setWord}
                 onIndexWord={indexWord}
                 onUserObj={userObj}
+                currentLanguage={currentLanguage}
               />
               {/* кнопка озвучування картки тексту (Англійська) (з перевіркою)*/}
-              <SoundButton onWord={word} onIndexWord={indexWord} />
+              <SoundButton
+                onWord={word}
+                onIndexWord={indexWord}
+                currentLanguage={currentLanguage}
+              />
 
               {word.length > 0 && (
                 <span className="card__text">
