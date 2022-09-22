@@ -6,6 +6,12 @@
   bottom: 0;
 }
 
+@media screen and (max-height: 600px) {
+  .footer__wrap {
+    display: none;
+  }
+}
+
 .footer {
   height: 80px;
   width: 100%;
@@ -34,11 +40,6 @@
   box-sizing: border-box;
   color: #36395a;
   cursor: pointer;
-  /* display: inline-flex; */
-  /* justify-content: center; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
   line-height: 1;
   list-style: none;
   overflow: hidden;
