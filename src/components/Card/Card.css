@@ -41,12 +41,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-  cursor: pointer; */
-
   align-self: center;
   background-color: #fff;
   background-image: none;
@@ -89,7 +83,8 @@
 .description__wrap {
   width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-evenly;
   margin-top: 30px;
   font-size: 26px;
   font-weight: 600;
@@ -111,4 +106,21 @@
 .fade-enter-active,
 .fade-exit-active {
   transition: all 0.8s ease;
+}
+
+.paginator__btn-plus {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }

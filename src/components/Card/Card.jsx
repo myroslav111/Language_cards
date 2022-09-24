@@ -65,6 +65,20 @@ function Card() {
     })();
   }, [email, lang, currentLanguage]);
 
+  /** pass 10 words */
+  const paginatorToTenPlus = () => {
+    if (word.length - 9 > indexWord) {
+      setIndexWord(prev => prev + 10);
+    }
+  };
+
+  /** pass 10 words */
+  const paginatorToTenMinus = () => {
+    if (9 < indexWord) {
+      setIndexWord(prev => prev - 10);
+    }
+  };
+
   return (
     <>
       <div className="wraper-card">
@@ -139,9 +153,15 @@ function Card() {
         </div>
         {/* words count */}
         <div className="description__wrap">
+          <button onClick={paginatorToTenMinus} className="paginator__btn-plus">
+            <span>-10</span>
+          </button>
           <span>
             {word.indexOf(word[indexWord]) + 1} - from - {word.length}
           </span>
+          <button onClick={paginatorToTenPlus} className="paginator__btn-plus">
+            +10
+          </button>
         </div>
       </div>
     </>
