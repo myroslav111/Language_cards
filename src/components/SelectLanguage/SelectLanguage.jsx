@@ -9,14 +9,14 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import TopicIcon from '@mui/icons-material/Topic';
 import { Context } from 'components/App';
 
 export default function SelectLanguge() {
   // const [currentLanguage, setCurrentLanguage] = useState(() =>
   //   localStorage.getItem('language')
   // );
-  const [open, setOpen] = React.useState(false);
+  const { lang } = useContext(Context);
+  const [open, setOpen] = useState(false);
   const [language, setLanguage] = useState('');
   const { currentLanguageOnApp } = useContext(Context);
 
@@ -43,7 +43,7 @@ export default function SelectLanguge() {
     <div>
       <img
         src={
-          language === 'en' || language === ''
+          lang === 'en'
             ? 'https://img.icons8.com/doodle/48/000000/great-britain.png'
             : 'https://img.icons8.com/doodle/48/000000/germany.png'
         }
@@ -97,8 +97,12 @@ export default function SelectLanguge() {
                   fontWeight: '700',
                 }}
               >
-                <option value={'en'}>EN</option>
-                <option value={'de'}>DE</option>
+                <option disabled={lang === 'en'} value={'en'}>
+                  EN
+                </option>
+                <option disabled={lang === 'de'} value={'de'}>
+                  DE
+                </option>
               </Select>
             </FormControl>
           </Box>
