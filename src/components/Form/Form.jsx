@@ -74,6 +74,7 @@ function Form() {
       {/* инпут 1 */}
       <label>
         {lang === 'en' || lang === '' ? 'EN' : 'DE'}
+
         <input
           type="text"
           name="en"
