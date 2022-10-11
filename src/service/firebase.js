@@ -3,10 +3,10 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
 
-// firebase data config
+// firebase data
 export const firebaseConfig = {
-  // apiKey: 'AIzaSyAZWL6jBhtQG0JPHEylLfigAUp0NuMMCN0',
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: 'AIzaSyAZWL6jBhtQG0JPHEylLfigAUp0NuMMCN0',
+    // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: 'lang-cards-1e9e8.firebaseapp.com',
   // authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: 'lang-cards-1e9e8',
