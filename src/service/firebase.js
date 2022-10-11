@@ -2,7 +2,8 @@ import apiForRegisteredUsers from './apiForRegistered';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
-// firebase data
+
+// firebase data config
 export const firebaseConfig = {
   // apiKey: 'AIzaSyAZWL6jBhtQG0JPHEylLfigAUp0NuMMCN0',
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
