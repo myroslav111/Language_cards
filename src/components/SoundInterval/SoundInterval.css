@@ -1,0 +1,13 @@
+.sound__interval {
+  background: none;
+  color: white;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+}

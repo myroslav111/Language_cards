@@ -11,6 +11,7 @@ import { Context } from 'components/App';
 import apiForRegisteredUsers from 'service/apiForRegistered';
 import apiForUnregisteredUsers from 'service/api';
 import './Card.css';
+import SoundInterval from 'components/SoundInterval';
 
 function Card() {
   const { lang } = useContext(Context);
@@ -117,6 +118,11 @@ function Card() {
               />
               {/* кнопка озвучування картки тексту (Англійська) (з перевіркою)*/}
               <SoundButton
+                onWord={word}
+                onIndexWord={indexWord}
+                currentLanguage={currentLanguage}
+              />
+              <SoundInterval
                 onWord={word}
                 onIndexWord={indexWord}
                 currentLanguage={currentLanguage}
