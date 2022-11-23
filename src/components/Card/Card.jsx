@@ -126,6 +126,7 @@ function Card() {
                 onWord={word}
                 onIndexWord={indexWord}
                 currentLanguage={currentLanguage}
+                stateForSwitchWord={stateForSwitchWord}
               />
 
               {word.length > 0 && (

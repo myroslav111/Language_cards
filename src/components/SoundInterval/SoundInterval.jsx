@@ -5,7 +5,12 @@ import { useState, useEffect } from 'react';
 let myCounter = 0;
 let timeout = null;
 
-const SoundInterval = ({ onWord, onIndexWord, currentLanguage }) => {
+const SoundInterval = ({
+  onWord,
+  onIndexWord,
+  currentLanguage,
+  stateForSwitchWord,
+}) => {
   const [counter, setCounter] = useState(0);
   const [togle, setTogle] = useState(false);
   console.log(onWord.length);
@@ -28,15 +33,12 @@ const SoundInterval = ({ onWord, onIndexWord, currentLanguage }) => {
   };
   // логіка кнопки озвучування
   const handleClickSound = c => {
-    // setTogle(prev => !prev);
-    // console.log(c);
-    // e.preventDefault();
     let soundWordIndex = onWord.filter((el, idx) => idx === c);
 
     const synth = window.speechSynthesis;
     // зупинемо все, що вже синтезується раніше
     synth.cancel();
-    console.log('hallo', soundWordIndex);
+
     //  читання тексту
     const utterance = new SpeechSynthesisUtterance(soundWordIndex[0].en);
     if (currentLanguage === 'en') {
